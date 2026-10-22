@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and project discussions
+    url: https://github.com/Paulohspaniago/professor-ai/discussions
+    about: Discuss study workflows, design choices, and contribution ideas.
+  - name: Report a security vulnerability privately
+    url: https://github.com/Paulohspaniago/professor-ai/security/advisories/new
+    about: Do not disclose vulnerabilities or private data in public issues.

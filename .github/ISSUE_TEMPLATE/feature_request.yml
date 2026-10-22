@@ -1,0 +1,31 @@
+name: Feature or design proposal
+description: Propose a user benefit or an improvement to an existing roadmap story.
+title: "[Proposal]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Who encounters this problem, and what are they trying to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: input
+    id: story
+    attributes:
+      label: Related roadmap story or issue
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and tradeoffs
+      description: Consider offline behavior, memory, accessibility, and maintenance when relevant.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How would we verify success?

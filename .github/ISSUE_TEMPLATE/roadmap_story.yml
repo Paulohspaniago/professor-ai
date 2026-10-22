@@ -1,0 +1,32 @@
+name: Roadmap story
+description: Turn a scoped roadmap story into an implementation issue.
+title: "[Story]: "
+labels: [story]
+body:
+  - type: input
+    id: story
+    attributes:
+      label: Roadmap story ID
+      placeholder: S01.02
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: User story and outcome
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Copy the current criteria and describe any proposed scope adjustment.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and validation
+      description: Link prerequisite issues and explain how this story will be verified.
+    validations:
+      required: true

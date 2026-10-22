@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a reproducible problem in documentation, tooling, or the application.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Professor AI is currently in planning/foundation development. Report what exists today.
+        Use synthetic examples and remove private material, credentials, and personal paths.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: Include the commit, release, or documentation page involved.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest useful example.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and redacted output
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python/runtime version, hardware, and model configuration when relevant.
