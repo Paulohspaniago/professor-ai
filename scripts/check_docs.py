@@ -8,7 +8,22 @@ import re
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-EXCLUDED = {".git", ".venv", ".superpowers", "node_modules", "data", "models", "artifacts"}
+EXCLUDED = {
+    ".git",
+    ".venv",
+    ".superpowers",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    "node_modules",
+    "data",
+    "models",
+    "artifacts",
+    "dist",
+    "build",
+    "coverage",
+    "htmlcov",
+}
 STORY = re.compile(r"\bS\d{2}\.\d{2}\b")
 LINK = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)\)")
 
