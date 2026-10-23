@@ -30,7 +30,7 @@ professor-ai = "professor_ai.cli:app"
 [dependency-groups]
 dev = [
   "httpx>=0.28,<1",
-  "mypy>=1.14,<2",
+  "mypy>=1.14,<3",
   "pytest>=8.3,<10",
   "pytest-socket>=0.7,<1",
   "ruff>=0.9,<1",
