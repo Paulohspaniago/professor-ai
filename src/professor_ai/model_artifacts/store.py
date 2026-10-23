@@ -10,7 +10,8 @@ from typing import Literal
 import httpx
 
 from professor_ai.model_artifacts.catalog import Artifact, Record, artifact_fingerprint
-from professor_ai.model_artifacts.transfer import ArtifactStoreError, transfer_file, verify_file
+from professor_ai.model_artifacts.transfer import ArtifactStoreError as ArtifactStoreError
+from professor_ai.model_artifacts.transfer import transfer_file, verify_file
 
 DISK_RESERVE_BYTES = 64 * 1024 * 1024
 RECEIPT = ".receipt.json"

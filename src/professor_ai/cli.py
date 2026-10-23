@@ -9,10 +9,12 @@ from pydantic import ValidationError
 from professor_ai.app import create_app
 from professor_ai.doctor import CapabilityCheck, DiagnosticReport, inspect_environment
 from professor_ai.evaluation.command import evaluate
+from professor_ai.model_artifacts.command import models_app
 from professor_ai.settings import load_settings
 
 app = typer.Typer(no_args_is_help=True, add_completion=False, help="Professor AI local foundation.")
 app.command()(evaluate)
+app.add_typer(models_app, name="models")
 
 
 def _configuration_error(error: ValidationError) -> str:
