@@ -75,6 +75,9 @@ The critical path is foundation → small evaluation set and runtime → storage
 - [ ] As a developer, I can reproduce basic retrieval and answer failures using redistributable material.
 - **Size:** M. **Dependencies:** S01.01.
 - **Acceptance:** 30 reviewed smoke cases cover English, Portuguese, mathematics, physics, and computing; include missing evidence, conflicting sources, and multi-source questions; every source has provenance and distribution terms; questions and answer keys are kept out of the retrieval corpus.
+- **Progress:** [30 proposals and 36 original sources](../evals/README.md) are
+  prepared with structural validation and a [review packet](../evals/REVIEW.md).
+  Human factual/bilingual review is still required; the story remains incomplete.
 
 ### S02.02 — Build the evaluation runner
 
@@ -348,7 +351,11 @@ The critical path is foundation → small evaluation set and runtime → storage
 
 ## First delivery sequence
 
-Start with S01.02 and S01.03 using the [foundation plan](plans/2026-10-22-foundation.md). Prepare S02.01 alongside that work. Then qualify S03.01/S03.02 and implement storage and ingestion before retrieval. Stop expanding features until S07.03 provides a real local end-to-end demo.
+S01.02 and S01.03 are implemented through the [foundation plan](plans/2026-10-22-foundation.md).
+Finish human review of the S02.01 [smoke proposals](../evals/REVIEW.md), then build
+the S02.02 evaluation runner and qualify S03.01/S03.02. Implement storage and
+ingestion before retrieval. Stop expanding features until S07.03 provides a real
+local end-to-end demo.
 
 Large later stories are roadmap commitments to investigate a capability, not implementation-ready specifications. Split them only when prerequisites are complete and the relevant evidence is available.
 

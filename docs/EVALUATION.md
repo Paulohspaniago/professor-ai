@@ -19,6 +19,19 @@ Primary categories are disjoint; secondary tags identify subject, language, answ
 
 Store a case ID, category, language, selected collections, question, expected status, reference answer or rubric, required evidence IDs, acceptable derivations, source provenance, and redistribution terms. Generated questions are proposals until a human reviews them. The corpus used for retrieval excludes evaluation questions, expected answers, and grading notes. When importing an authentic past exam, exclude its answer key from an exercise-solving evaluation; explicitly label answer-key lookup as a different task.
 
+The initial [development fixtures](../evals/README.md) now provide 30 proposals,
+15 per language and ten per subject, backed by 36 original notes/fictional records.
+Their [review packet](../evals/REVIEW.md) exposes questions, expected answers,
+rubrics, scope, and evidence for human inspection. All initial records are pending
+human review, so S02.01 remains open. They are not part of a held-out release set.
+
+`uv run python scripts/check_evals.py --check-review-packet` validates fixture
+integrity offline; `--require-reviewed` additionally rejects unapproved records.
+Passing the metadata gate records a review claim, not proof of identity or factual
+correctness. No evaluation runner, retrieval scoring, or model-quality result is
+implemented by these checks. A later ingestion adapter must allowlist only the
+manifest's corpus documents, scoped to the selected collection and language.
+
 Use original or suitably licensed documents and exercises. Do not ship private textbooks to make a public benchmark reproducible. Include a corpus manifest with document hashes and parser/index fingerprints.
 
 ## Metrics and initial gates
