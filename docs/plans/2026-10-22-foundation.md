@@ -43,11 +43,11 @@
 | tests/unit/test_doctor.py | Required versus optional capabilities |
 | tests/integration/test_health.py | HTTP health contract without models |
 | tests/integration/test_cli.py | CLI exit codes and diagnostics |
-| scripts/check_docs.py | Local Markdown link and fragment validation |
+| scripts/check_docs.py | Existing local Markdown link and roadmap validation |
 | .github/workflows/ci.yml | Reproducible automated checks |
 | docs/DEVELOPMENT.md | Commands proven against the implemented environment |
 
-These paths are planned. The files do not exist simply because they appear here.
+Application paths are planned. The documentation checker already exists as part of the public repository setup; reuse it rather than recreating it.
 
 ## Task 1: Create the installable package
 
@@ -90,11 +90,11 @@ This task is package configuration; it needs an installation check, not a test t
 
 ## Task 4: Make the foundation reproducible in CI and documentation
 
-**Files:** create `.github/workflows/ci.yml`, `scripts/check_docs.py`, and `docs/DEVELOPMENT.md`; update `README.md` and `CONTRIBUTING.md` with commands verified in Tasks 1–3.
+**Files:** create `.github/workflows/ci.yml` and `docs/DEVELOPMENT.md`; reuse `scripts/check_docs.py` and preserve the existing `.github/workflows/docs.yml`; update `README.md` and `CONTRIBUTING.md` with commands verified in Tasks 1–3.
 
 **Interfaces:** `python scripts/check_docs.py` returns 0 when local Markdown targets and fragments resolve and nonzero with file/line diagnostics otherwise. It ignores external URLs and explicitly marked illustrative source paths. No network requests are required.
 
-- [ ] Implement the focused link checker and check it against a temporary missing-target fixture and a known-valid fixture. Do not add application tests solely for documentation wording.
+- [ ] Run the existing documentation checker and extend it only if application documentation introduces unsupported link forms. Check changed behavior against a temporary missing-target fixture and a known-valid fixture. Do not add application tests solely for documentation wording.
 - [ ] Configure CI on Linux and macOS with Python 3.12, a pinned uv version, and actions pinned to verified revisions. Install with `uv sync --locked --group dev` and run the commands below.
 - [ ] Run `uv run ruff format --check .`, `uv run ruff check .`, `uv run mypy src/professor_ai`, `uv run pytest -q`, and `uv run python scripts/check_docs.py`; expect zero failures.
 - [ ] Repeat installation and those checks in a clean temporary checkout without the current virtual environment. Confirm tests make no external network requests and do not read a real user database.
@@ -103,6 +103,6 @@ This task is package configuration; it needs an installation check, not a test t
 
 ## Handoff and subsequent plans
 
-This plan completes the application foundation only. S01.04 handles GitHub/community setup. E02 handles evaluation data; E03 handles model artifacts and real inference. Those subsystem plans should be written with the contracts and failures learned from this foundation, rather than pretending the entire roadmap is implementation-ready today.
+This plan completes the application foundation only. GitHub/community setup is tracked separately in S01.04 and can precede it. E02 handles evaluation data; E03 handles model artifacts and real inference. Those subsystem plans should be written with the contracts and failures learned from this foundation, rather than pretending the entire roadmap is implementation-ready today.
 
 Recommended initial execution: implement these four tasks in order in one checkout, with review at each coherent change. Parallel work becomes useful for independently owned evaluation fixtures or UI work once shared contracts exist. This document does not authorize publishing a remote repository or downloading model weights by itself; those actions follow the user's execution request and the relevant story scope.

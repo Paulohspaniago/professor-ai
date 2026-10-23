@@ -24,6 +24,12 @@ The CI currently proves documentation integrity, not application correctness, re
 
 Milestones mirror M0–M6 from the [roadmap](ROADMAP.md). Labels identify stories, priority, subsystem, documentation, dependencies, and approachable contributions. Start with the ready foundation and evaluation work; retain the full 44-story backlog in the roadmap until each story is ready to become an issue.
 
+Initial contribution paths:
+
+- [S01.02: Python application foundation](https://github.com/Paulohspaniago/professor-ai/issues/2)
+- [S02.01: Reviewed learning corpus](https://github.com/Paulohspaniago/professor-ai/issues/3)
+- [First contribution: one bilingual physics fixture](https://github.com/Paulohspaniago/professor-ai/issues/4)
+
 The maintainer owns triage, technical decisions, contributor access, and release publication. CI passing is necessary but not sufficient for acceptance. Review behavior and evidence before merging, and keep the roadmap's completion state accurate.
 
 ## Repository versus local configuration
