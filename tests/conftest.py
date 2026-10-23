@@ -89,3 +89,28 @@ def evaluation_root(tmp_path: Path) -> Path:
     (root / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
     (root / "cases/smoke.json").write_text(json.dumps(cases), encoding="utf-8")
     return root
+
+
+@pytest.fixture
+def replay_path(evaluation_root: Path) -> Path:
+    from professor_ai.evaluation.fixtures import load_dataset
+
+    bundle = load_dataset(evaluation_root)
+    payload = {
+        "schema_version": 1,
+        "dataset_fingerprint": bundle.fingerprint,
+        "results": {
+            case.id: {
+                "evidence_ids": [f"square-{'en' if case.language == 'en' else 'pt'}"],
+                "answer": {
+                    "status": "answered",
+                    "text": "A square has four equal sides.",
+                    "citations": [f"square-{'en' if case.language == 'en' else 'pt'}"],
+                },
+            }
+            for case in bundle.cases
+        },
+    }
+    path = evaluation_root.parent / "replay.json"
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    return path

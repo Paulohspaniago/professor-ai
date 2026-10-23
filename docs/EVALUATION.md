@@ -1,6 +1,6 @@
 # Evaluation and Release Gates
 
-Status: proposed targets, 2026-10-22. No measurements have been collected. Gates below define evidence needed for a release; they are not advertised capabilities.
+Status: proposed targets, 2026-10-22. No model-quality or inference-performance measurements have been collected. Gates below define evidence needed for a release; they are not advertised capabilities.
 
 ## Dataset design
 
@@ -28,8 +28,10 @@ human review, so S02.01 remains open. They are not part of a held-out release se
 `uv run python scripts/check_evals.py --check-review-packet` validates fixture
 integrity offline; `--require-reviewed` additionally rejects unapproved records.
 Passing the metadata gate records a review claim, not proof of identity or factual
-correctness. No evaluation runner, retrieval scoring, or model-quality result is
-implemented by these checks. A later ingestion adapter must allowlist only the
+correctness. The [development runner](EVALUATION_RUNNER.md) executes synthetic
+abstention/replay providers and reports stage failures, timings, and mechanical
+diagnostics. It requires an explicit override for proposals and never certifies
+semantic correctness or release readiness. A later ingestion adapter must allowlist only the
 manifest's corpus documents, scoped to the selected collection and language.
 
 Use original or suitably licensed documents and exercises. Do not ship private textbooks to make a public benchmark reproducible. Include a corpus manifest with document hashes and parser/index fingerprints.

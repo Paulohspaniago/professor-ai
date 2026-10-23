@@ -90,6 +90,19 @@ enforce recorded human approvals; it intentionally fails while proposals remain.
 After editing annotations, run `uv run python scripts/check_evals.py
 --write-review-packet` on one line and commit the refreshed packet.
 
+The [development evaluation runner](EVALUATION_RUNNER.md) exercises these fixtures
+with synthetic abstention or replay providers and writes JSON/Markdown reports:
+
+```bash
+uv run professor-ai evaluate --dataset evals --allow-unreviewed --json
+```
+
+Exit 1 is expected for the abstention baseline, which deliberately disagrees with
+answerable/conflicting cases. Reports are saved under ignored
+`artifacts/evaluations/`. The explicit development override is needed while the
+corpus awaits human review. The full network-blocked suite covers the runner and
+its command on Linux/macOS; it never downloads or evaluates a model.
+
 ## Contribution workflow
 
 Use a branch and a pull request against `main`, follow [CONTRIBUTING.md](../CONTRIBUTING.md), and reference the relevant [roadmap story](ROADMAP.md). Keep setup commands accurate, tests focused on behavior, and private files out of commits. For a clean-environment check, install the committed checkout in a new temporary directory instead of reusing an existing `.venv`.

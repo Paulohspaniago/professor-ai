@@ -4,7 +4,7 @@
 
 Professor AI aims to help students study multiple subjects and work through exam questions using a private, user-managed knowledge base. Documents, retrieval, embeddings, and answer generation run on the user's computer after dependencies and models have been downloaded.
 
-> **Project status: foundation development.** The Python package, local settings, CLI diagnostics, and health API are implemented. [Thirty bilingual development cases](evals/README.md) are prepared for human review. Learning-material ingestion, RAG, inference, and the web interface remain planned. There is no stable application release or measured model-performance result yet.
+> **Project status: foundation development.** The Python package, settings, diagnostics, health API, and [synthetic evaluation runner](docs/EVALUATION_RUNNER.md) are implemented. [Thirty bilingual development cases](evals/README.md) are prepared for human review. Learning-material ingestion, RAG, inference, and the web interface remain planned. There is no stable application release or measured model-performance result yet.
 
 ## Run the foundation
 
@@ -55,11 +55,12 @@ These are proposed project choices, not a tested compatibility matrix. See the [
 4. [Evaluation and release gates](docs/EVALUATION.md)
 5. [Foundation implementation plan](docs/plans/2026-10-22-foundation.md)
 6. [Development smoke corpus and review workflow](evals/README.md)
-6. [Contributing](CONTRIBUTING.md)
-7. [Repository maintenance and security settings](docs/REPOSITORY.md)
-8. [Development and local setup](docs/DEVELOPMENT.md)
+7. [Development evaluation runner](docs/EVALUATION_RUNNER.md)
+8. [Contributing](CONTRIBUTING.md)
+9. [Repository maintenance and security settings](docs/REPOSITORY.md)
+10. [Development and local setup](docs/DEVELOPMENT.md)
 
-The next vertical slice will import a small document collection, retrieve evidence, and produce a cited answer through the CLI. The interface follows that tested path. Current installation runs the foundation only.
+The next vertical slice will import a small document collection, retrieve evidence, and produce a cited answer through the CLI. The interface follows that tested path. Current installation includes the foundation and synthetic evaluation tooling.
 
 ## Contributing
 
