@@ -24,6 +24,9 @@ dependencies = [
 Homepage = "https://github.com/Paulohspaniago/professor-ai"
 Issues = "https://github.com/Paulohspaniago/professor-ai/issues"
 
+[project.scripts]
+professor-ai = "professor_ai.cli:app"
+
 [dependency-groups]
 dev = [
   "httpx>=0.28,<1",
