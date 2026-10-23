@@ -29,6 +29,17 @@ The six fictional conflict records live in separate collections so they cannot
 contaminate ordinary learning questions. Do not retrieve external reference URLs:
 they establish provenance, not additional answer evidence for these cases.
 
+## Format decision
+
+Schema version 1 uses JSON annotations and Markdown source notes: both are easy
+to diff, and existing Pydantic validates nested rubrics without another dependency.
+CSV would flatten evidence/review lists; YAML would add a parser dependency.
+Keep these development fixtures out of the application database so contributors
+can inspect them without a migration or model runtime. Unsupported schema versions
+are rejected. A future incompatible format must increment the schema version and
+provide an explicit conversion of cases/evidence IDs; do not silently reinterpret
+this version or carry approvals across changed content.
+
 ## Provenance and redistribution
 
 All committed learning text and annotations are AI-assisted original contributions

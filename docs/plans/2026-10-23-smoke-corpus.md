@@ -34,11 +34,11 @@
 
 **Interfaces:** `load_dataset(root: Path) -> DatasetBundle`, `check_dataset(root: Path, *, require_reviewed: bool = False) -> ValidationReport`, and `render_review(bundle: DatasetBundle) -> str`. Pydantic records define manifest documents, coverage counts, cases, numeric targets, and explicit review metadata.
 
-- [ ] Write small temporary dataset fixtures testing valid drafts, approved metadata requirements, broken hashes, duplicate IDs, missing evidence, collection/language isolation, path traversal/symlinks, coverage, and translation consistency.
-- [ ] Run `uv run pytest tests/unit/test_evaluation_fixtures.py -q`; confirm the missing implementation fails.
-- [ ] Implement strict field validation, safe allowlisted paths, coverage checks, evidence resolution, translation-family checks, and a deterministic manifest/case fingerprint.
-- [ ] Run the focused tests and the full suite; expect all passing without network access.
-- [ ] Commit the independently reviewable contracts and their behavior tests.
+- [x] Write small temporary dataset fixtures testing valid drafts, approved metadata requirements, broken hashes, duplicate IDs, missing evidence, collection/language isolation, path traversal/symlinks, coverage, and translation consistency.
+- [x] Run `uv run pytest tests/unit/test_evaluation_fixtures.py -q`; confirm the missing implementation fails.
+- [x] Implement strict field validation, safe allowlisted paths, coverage checks, evidence resolution, translation-family checks, and a deterministic manifest/case fingerprint.
+- [x] Run the focused tests and the full suite; expect all passing without network access.
+- [x] Commit the independently reviewable contracts and their behavior tests.
 
 ## Task 2: Author the proposed material and review packet
 
@@ -46,12 +46,12 @@
 
 **Interfaces:** Manifest schema version 1; split `smoke-development`; stable document IDs serve as evidence IDs because each short document is one evidence unit. Collection IDs are logical fixture names, not database UUIDs. Each case has a question, expected status/reference answer, rubric, required evidence IDs, and review record.
 
-- [ ] Author English/Portuguese note pairs and three separate fictional conflict collections. Record primary reference URLs/check dates where applicable; fictional measurements/configuration are explicitly invented.
-- [ ] Author fifteen case families, each with one English and one Portuguese case. Keep all thirty review records pending, with no fabricated reviewer or review date.
-- [ ] Add an acceptance test requiring thirty cases, three subjects, balanced languages, the required scenario types, and valid source references; do not freeze pending review forever in a test.
-- [ ] Generate source hashes and the readable review packet from the annotations. Confirm the packet exposes every question, answer/rubric, selected collection, and source link for human inspection.
-- [ ] Run dataset checks; confirm normal structural validation passes while `require_reviewed=True` fails with all pending IDs accounted for.
-- [ ] Commit the proposed data. S02.01 remains open until actual human review.
+- [x] Author English/Portuguese note pairs and three separate fictional conflict collections. Record primary reference URLs/check dates where applicable; fictional measurements/configuration are explicitly invented.
+- [x] Author fifteen case families, each with one English and one Portuguese case. Keep all thirty review records pending, with no fabricated reviewer or review date.
+- [x] Add an acceptance test requiring thirty cases, three subjects, balanced languages, the required scenario types, and valid source references; do not freeze pending review forever in a test.
+- [x] Generate source hashes and the readable review packet from the annotations. Confirm the packet exposes every question, answer/rubric, selected collection, and source link for human inspection.
+- [x] Run dataset checks; confirm normal structural validation passes while `require_reviewed=True` fails with all pending IDs accounted for.
+- [x] Commit the proposed data. S02.01 remains open until actual human review.
 
 ## Task 3: Integrate contributor tooling and CI
 
@@ -59,11 +59,13 @@
 
 **Interfaces:** `uv run python scripts/check_evals.py` performs structural validation; `--require-reviewed` enforces the human-review gate; `--write-review-packet` regenerates `evals/REVIEW.md`; `--check-review-packet` rejects a stale packet; `--json` emits a machine-readable report.
 
-- [ ] Exercise CLI success, malformed data, pending review, and review-packet consistency through temporary fixtures before implementation.
-- [ ] Implement the thin CLI and document the separation between structural validity, recorded human review, and semantic correctness.
-- [ ] Add structural/packet checks to the existing Linux/macOS jobs. Preserve the network-blocked suite and required check names.
-- [ ] Run Ruff, mypy, the full tests, documentation and fixture checks, and Git whitespace checks.
-- [ ] Obtain a fresh code/data review, address reproducible defects with regression tests, publish a PR referencing issue #3, and inspect hosted CI.
+- [x] Exercise CLI success, malformed data, pending review, and review-packet consistency through temporary fixtures before implementation.
+- [x] Implement the thin CLI and document the separation between structural validity, recorded human review, and semantic correctness.
+- [x] Add structural/packet checks to the existing Linux/macOS jobs. Preserve the network-blocked suite and required check names.
+- [x] Run Ruff, mypy, the full tests, documentation and fixture checks, and Git whitespace checks.
+- [x] Obtain a fresh code/data review and address reproducible defects with regression tests.
+
+Handoff: publish a PR referencing issue #3 and inspect hosted CI. Human review remains pending.
 
 ## Human review handoff
 

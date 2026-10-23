@@ -53,3 +53,30 @@ def test_cli_refuses_packet_write_through_external_symlink(
     assert invoke(monkeypatch, evaluation_root, "--json", "--write-review-packet") == 1
     assert external.read_text() == "Do not overwrite"
     assert json.loads(capsys.readouterr().out)["status"] == "invalid"
+
+
+@pytest.mark.parametrize("relative", ["cases/smoke.json", "corpus/square.en.md"])
+def test_cli_cannot_overwrite_dataset_via_internal_packet_symlink(
+    evaluation_root, monkeypatch, capsys, relative
+) -> None:
+    target = evaluation_root / relative
+    original = target.read_bytes()
+    (evaluation_root / "REVIEW.md").symlink_to(target)
+
+    assert invoke(monkeypatch, evaluation_root, "--json", "--write-review-packet") == 1
+    assert target.read_bytes() == original
+    assert json.loads(capsys.readouterr().out)["status"] == "invalid"
+
+
+def test_packet_generation_replaces_hard_link_without_overwriting_annotations(
+    evaluation_root, monkeypatch
+) -> None:
+    target = evaluation_root / "cases/smoke.json"
+    original = target.read_bytes()
+    packet = evaluation_root / "REVIEW.md"
+    packet.hardlink_to(target)
+
+    assert invoke(monkeypatch, evaluation_root, "--write-review-packet") == 0
+    assert target.read_bytes() == original
+    assert packet.read_text().startswith("# Smoke corpus review packet")
+    assert not packet.samefile(target)

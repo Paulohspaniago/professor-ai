@@ -2,10 +2,10 @@
 
 import argparse
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from professor_ai.evaluation.fixtures import (
     check_dataset,
-    dataset_path,
     load_dataset,
     render_review,
 )
@@ -24,9 +24,15 @@ def main() -> int:
     if report.status != "invalid" and (args.write_review_packet or args.check_review_packet):
         try:
             expected = render_review(load_dataset(args.root))
-            target = dataset_path(args.root.resolve(), "REVIEW.md")
+            target = args.root.resolve() / "REVIEW.md"
+            if target.is_symlink():
+                raise ValueError("review packet must not be a symbolic link")
             if args.write_review_packet:
-                target.write_text(expected, encoding="utf-8")
+                # Replace the directory entry, rather than truncate a linked input inode.
+                with TemporaryDirectory(prefix=".review-", dir=target.parent) as temporary:
+                    staging = Path(temporary) / "REVIEW.md"
+                    staging.write_text(expected, encoding="utf-8")
+                    staging.replace(target)
             elif target.read_text(encoding="utf-8") != expected:
                 raise ValueError("stale review packet; run --write-review-packet")
         except (OSError, ValueError, RuntimeError) as error:
