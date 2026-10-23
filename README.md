@@ -4,7 +4,7 @@
 
 Professor AI aims to help students study multiple subjects and work through exam questions using a private, user-managed knowledge base. Documents, retrieval, embeddings, and answer generation run on the user's computer after dependencies and models have been downloaded.
 
-> **Project status: foundation development.** The Python package, local settings, CLI diagnostics, and health API are implemented. Learning-material ingestion, RAG, inference, and the web interface remain planned. There is no stable application release or measured model-performance result yet.
+> **Project status: foundation development.** The Python package, local settings, CLI diagnostics, and health API are implemented. [Thirty bilingual development cases](evals/README.md) are prepared for human review. Learning-material ingestion, RAG, inference, and the web interface remain planned. There is no stable application release or measured model-performance result yet.
 
 ## Run the foundation
 
@@ -54,6 +54,7 @@ These are proposed project choices, not a tested compatibility matrix. See the [
 3. [Model recommendations and selection protocol](docs/MODELS.md)
 4. [Evaluation and release gates](docs/EVALUATION.md)
 5. [Foundation implementation plan](docs/plans/2026-10-22-foundation.md)
+6. [Development smoke corpus and review workflow](evals/README.md)
 6. [Contributing](CONTRIBUTING.md)
 7. [Repository maintenance and security settings](docs/REPOSITORY.md)
 8. [Development and local setup](docs/DEVELOPMENT.md)

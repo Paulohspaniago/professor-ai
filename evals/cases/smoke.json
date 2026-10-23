@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "smoke-cs-01-en",
+    "family_id": "cs-01",
+    "language": "en",
+    "subject": "computer_science",
+    "category": "conceptual",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Why does binary search on an array require sorted values?",
+    "reference_answer": "Ordering makes a comparison with the middle value sufficient to discard one half. Without it, the target could remain in the discarded half.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "binary-search-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Explain how ordering justifies discarding half the search space."
+      ],
+      "must_not_include": [
+        "Claim binary search works on an arbitrary unsorted array."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-01-pt",
+    "family_id": "cs-01",
+    "language": "pt-BR",
+    "subject": "computer_science",
+    "category": "conceptual",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Por que a busca binária em um vetor exige valores ordenados?",
+    "reference_answer": "A ordenação permite descartar uma metade ao comparar o alvo com o valor central. Sem ela, o alvo poderia estar na metade descartada.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "binary-search-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Explicar como a ordenação permite descartar metade do espaço de busca."
+      ],
+      "must_not_include": [
+        "Afirmar que a busca binária funciona em qualquer vetor sem ordenação."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-02-en",
+    "family_id": "cs-02",
+    "language": "en",
+    "subject": "computer_science",
+    "category": "derivation",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "A C8 message has 24 symbols. How many payload bits does it contain, excluding metadata?",
+    "reference_answer": "24 × 8 = 192 bits of payload.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "fixed-width-code-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Multiply 24 symbols by 8 bits per symbol; report 192 bits."
+      ],
+      "must_not_include": [
+        "Treat every Unicode character as eight bits."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 192,
+      "unit": "bit",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-02-pt",
+    "family_id": "cs-02",
+    "language": "pt-BR",
+    "subject": "computer_science",
+    "category": "derivation",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Uma mensagem C8 tem 24 símbolos. Quantos bits de dados ela contém, excluindo metadados?",
+    "reference_answer": "24 × 8 = 192 bits de dados.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "fixed-width-code-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Multiplicar 24 símbolos por 8 bits por símbolo; informar 192 bits."
+      ],
+      "must_not_include": [
+        "Tratar todo caractere Unicode como tendo oito bits."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 192,
+      "unit": "bit",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-03-en",
+    "family_id": "cs-03",
+    "language": "en",
+    "subject": "computer_science",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Which transaction isolation level is configured for the fictional Atlas service?",
+    "reference_answer": "The selected material does not specify an Atlas transaction isolation level. Its configuration is needed to answer.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Identify that the Atlas isolation configuration is absent."
+      ],
+      "must_not_include": [
+        "Guess a database default or invent an Atlas setting."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Atlas transaction isolation configuration"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-03-pt",
+    "family_id": "cs-03",
+    "language": "pt-BR",
+    "subject": "computer_science",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Qual nível de isolamento de transações está configurado no serviço fictício Atlas?",
+    "reference_answer": "O material selecionado não informa o nível de isolamento de transações do Atlas. É necessária essa configuração para responder.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Identificar a ausência da configuração de isolamento do Atlas."
+      ],
+      "must_not_include": [
+        "Supor um padrão de banco ou inventar uma configuração do Atlas."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Atlas transaction isolation configuration"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-04-en",
+    "family_id": "cs-04",
+    "language": "en",
+    "subject": "computer_science",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "computer-science-conflict"
+    ],
+    "question": "What is the retry_limit for Atlas snapshot 17 according to the selected records?",
+    "reference_answer": "The records conflict: A reports 3 and B reports 5 for snapshot 17. Equal authority and no precedence prevent selecting one as definitive.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "atlas-config-a-en",
+      "atlas-config-b-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Report both 3 and 5 and the unresolved same-snapshot conflict."
+      ],
+      "must_not_include": [
+        "Choose a value, average the settings, or invent a newer snapshot."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-04-pt",
+    "family_id": "cs-04",
+    "language": "pt-BR",
+    "subject": "computer_science",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "computer-science-conflict"
+    ],
+    "question": "Qual é o retry_limit do snapshot 17 do Atlas segundo os registros selecionados?",
+    "reference_answer": "Os registros divergem: A informa 3 e B informa 5 para o snapshot 17. Como têm igual autoridade e não há precedência, não é possível escolher um valor definitivo.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "atlas-config-a-pt",
+      "atlas-config-b-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Informar 3 e 5 e o conflito não resolvido no mesmo snapshot."
+      ],
+      "must_not_include": [
+        "Escolher um valor, calcular a média ou inventar um snapshot mais recente."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-05-en",
+    "family_id": "cs-05",
+    "language": "en",
+    "subject": "computer_science",
+    "category": "conceptual",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Which two constraints in the practice schema prevent duplicate student IDs and enrollments with missing students?",
+    "reference_answer": "The students NOT NULL PRIMARY KEY prevents duplicate student IDs. With enforcement enabled, the enrollments NOT NULL foreign key requires an existing student. These constraints do not by themselves deduplicate people or repeated enrollments.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "student-primary-key-en",
+      "enrollment-foreign-key-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Explain primary-key uniqueness and enforced non-null foreign-key references."
+      ],
+      "must_not_include": [
+        "Claim the constraints detect duplicate people or prohibit repeated enrollments."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-cs-05-pt",
+    "family_id": "cs-05",
+    "language": "pt-BR",
+    "subject": "computer_science",
+    "category": "conceptual",
+    "selected_collections": [
+      "computer-science"
+    ],
+    "question": "Quais duas restrições do esquema de exercício impedem IDs de estudantes duplicados e matrículas sem estudante existente?",
+    "reference_answer": "A chave NOT NULL PRIMARY KEY de students impede IDs duplicados. Com a verificação ativada, a chave estrangeira NOT NULL de enrollments exige um estudante existente. Essas restrições, sozinhas, não eliminam pessoas duplicadas nem matrículas repetidas.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "student-primary-key-pt",
+      "enrollment-foreign-key-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Explicar a unicidade da chave primária e as referências da chave estrangeira não nula com verificação ativada."
+      ],
+      "must_not_include": [
+        "Afirmar que as restrições detectam pessoas duplicadas ou impedem matrículas repetidas."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-01-en",
+    "family_id": "math-01",
+    "language": "en",
+    "subject": "mathematics",
+    "category": "conceptual",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Why do 3/4 and 6/8 represent the same value?",
+    "reference_answer": "Multiplying both the numerator and denominator of 3/4 by 2 gives 6/8 while preserving the ratio.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "equivalent-fractions-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Use the same nonzero factor 2 on numerator and denominator."
+      ],
+      "must_not_include": [
+        "Claim changing only the numerator preserves the fraction."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-01-pt",
+    "family_id": "math-01",
+    "language": "pt-BR",
+    "subject": "mathematics",
+    "category": "conceptual",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Por que 3/4 e 6/8 representam o mesmo valor?",
+    "reference_answer": "Multiplicar o numerador e o denominador de 3/4 por 2 resulta em 6/8, preservando a razão.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "equivalent-fractions-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Usar o mesmo fator não nulo 2 no numerador e no denominador."
+      ],
+      "must_not_include": [
+        "Afirmar que alterar apenas o numerador preserva a fração."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-02-en",
+    "family_id": "math-02",
+    "language": "en",
+    "subject": "mathematics",
+    "category": "derivation",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Solve 5x + 4 = 39 using the selected equation rules.",
+    "reference_answer": "Subtract 4 from both sides: 5x = 35. Divide both sides by 5: x = 7.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "linear-equations-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Show subtraction of 4 and division by 5; obtain x = 7."
+      ],
+      "must_not_include": [
+        "Perform an operation on only one side."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 7,
+      "unit": "unitless",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-02-pt",
+    "family_id": "math-02",
+    "language": "pt-BR",
+    "subject": "mathematics",
+    "category": "derivation",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Resolva 5x + 4 = 39 usando as regras de equações selecionadas.",
+    "reference_answer": "Subtraia 4 dos dois lados: 5x = 35. Divida os dois lados por 5: x = 7.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "linear-equations-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Mostrar a subtração de 4 e a divisão por 5; obter x = 7."
+      ],
+      "must_not_include": [
+        "Realizar uma operação em apenas um lado."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 7,
+      "unit": "unitless",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-03-en",
+    "family_id": "math-03",
+    "language": "en",
+    "subject": "mathematics",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "What is the standard deviation of the class A measurements?",
+    "reference_answer": "The selected notes contain no class A observations or population/sample convention. Those inputs are required; a numeric standard deviation cannot be determined.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Identify missing observations and population/sample convention."
+      ],
+      "must_not_include": [
+        "Invent measurements or a numeric standard deviation."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Class A observations",
+      "Population or sample convention"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-03-pt",
+    "family_id": "math-03",
+    "language": "pt-BR",
+    "subject": "mathematics",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Qual é o desvio padrão das medições da turma A?",
+    "reference_answer": "As notas selecionadas não contêm as observações da turma A nem a convenção de população ou amostra. Esses dados são necessários; não é possível determinar um desvio padrão numérico.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Identificar a ausência das observações e da convenção de população ou amostra."
+      ],
+      "must_not_include": [
+        "Inventar medições ou um desvio padrão numérico."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Class A observations",
+      "Population or sample convention"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-04-en",
+    "family_id": "math-04",
+    "language": "en",
+    "subject": "mathematics",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "mathematics-conflict"
+    ],
+    "question": "What width was recorded for rectangle R in survey 17?",
+    "reference_answer": "Record A says 3 m and record B says 4 m for the same survey. With equal authority and no precedence rule, the width is unresolved.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "rectangle-record-a-en",
+      "rectangle-record-b-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Report both widths and the unresolved conflict."
+      ],
+      "must_not_include": [
+        "Choose one width or use their average as a recorded measurement."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-04-pt",
+    "family_id": "math-04",
+    "language": "pt-BR",
+    "subject": "mathematics",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "mathematics-conflict"
+    ],
+    "question": "Qual largura foi registrada para o retângulo R no levantamento 17?",
+    "reference_answer": "O registro A informa 3 m e o registro B informa 4 m para o mesmo levantamento. Com igual autoridade e sem regra de precedência, a largura permanece indefinida.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "rectangle-record-a-pt",
+      "rectangle-record-b-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Informar as duas larguras e o conflito não resolvido."
+      ],
+      "must_not_include": [
+        "Escolher uma largura ou usar a média como medida registrada."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-05-en",
+    "family_id": "math-05",
+    "language": "en",
+    "subject": "mathematics",
+    "category": "derivation",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "A rectangle is 250 cm long and 80 cm wide. What is its area in m²?",
+    "reference_answer": "A = 250 × 80 = 20,000 cm². Since 1 m² = 10,000 cm², the area is 2 m².",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "rectangle-area-en",
+      "metric-area-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Use rectangle area and squared metric conversion to obtain 2 m²."
+      ],
+      "must_not_include": [
+        "Divide cm² by 100 instead of 10,000."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 2,
+      "unit": "m²",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-math-05-pt",
+    "family_id": "math-05",
+    "language": "pt-BR",
+    "subject": "mathematics",
+    "category": "derivation",
+    "selected_collections": [
+      "mathematics"
+    ],
+    "question": "Um retângulo tem 250 cm de comprimento e 80 cm de largura. Qual é sua área em m²?",
+    "reference_answer": "A = 250 × 80 = 20.000 cm². Como 1 m² = 10.000 cm², a área é 2 m².",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "rectangle-area-pt",
+      "metric-area-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Usar a área do retângulo e a conversão métrica ao quadrado para obter 2 m²."
+      ],
+      "must_not_include": [
+        "Dividir cm² por 100 em vez de 10.000."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 2,
+      "unit": "m²",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-01-en",
+    "family_id": "phys-01",
+    "language": "en",
+    "subject": "physics",
+    "category": "conceptual",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "Can an object have constant speed while its velocity changes? Explain using the selected note.",
+    "reference_answer": "Yes. Speed is the magnitude, whereas velocity also includes direction. A change of direction changes velocity even if its magnitude stays constant.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "speed-velocity-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Distinguish magnitude from direction; answer yes when direction changes."
+      ],
+      "must_not_include": [
+        "Claim constant speed always implies constant velocity."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-01-pt",
+    "family_id": "phys-01",
+    "language": "pt-BR",
+    "subject": "physics",
+    "category": "conceptual",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "Um objeto pode manter a rapidez constante enquanto sua velocidade vetorial muda? Explique usando a nota selecionada.",
+    "reference_answer": "Sim. A rapidez é o módulo, enquanto a velocidade vetorial inclui também a direção. Mudar a direção altera a velocidade vetorial mesmo com módulo constante.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "speed-velocity-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Distinguir módulo e direção; responder sim quando a direção muda."
+      ],
+      "must_not_include": [
+        "Afirmar que rapidez constante sempre implica velocidade vetorial constante."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-02-en",
+    "family_id": "phys-02",
+    "language": "en",
+    "subject": "physics",
+    "category": "derivation",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "In an inertial frame, a constant-mass 3 kg body experiences a net force of 18 N. What is its acceleration magnitude?",
+    "reference_answer": "From F_net = ma, a = 18 / 3 = 6 m/s².",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "newton-second-law-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Use net force divided by mass and give 6 m/s²."
+      ],
+      "must_not_include": [
+        "Give velocity rather than acceleration."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 6,
+      "unit": "m/s²",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-02-pt",
+    "family_id": "phys-02",
+    "language": "pt-BR",
+    "subject": "physics",
+    "category": "derivation",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "Em um referencial inercial, um corpo de massa constante de 3 kg sofre uma força resultante de 18 N. Qual é o módulo de sua aceleração?",
+    "reference_answer": "De F_resultante = ma, a = 18 / 3 = 6 m/s².",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "newton-second-law-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Dividir a força resultante pela massa e informar 6 m/s²."
+      ],
+      "must_not_include": [
+        "Informar velocidade em vez de aceleração."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 6,
+      "unit": "m/s²",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-03-en",
+    "family_id": "phys-03",
+    "language": "en",
+    "subject": "physics",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "A vehicle has mass 1,000 kg. How far does it travel during its first 8 seconds?",
+    "reference_answer": "Mass and elapsed time alone do not determine distance. The initial motion and its evolution, such as a velocity history or sufficient force/motion data, are missing.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Explain that mass and time do not determine a trajectory; identify missing motion data."
+      ],
+      "must_not_include": [
+        "Assume rest, constant velocity or acceleration without evidence."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Initial motion and subsequent motion or force history"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-03-pt",
+    "family_id": "phys-03",
+    "language": "pt-BR",
+    "subject": "physics",
+    "category": "insufficient_evidence",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "Um veículo tem massa de 1.000 kg. Que distância ele percorre nos primeiros 8 segundos?",
+    "reference_answer": "Massa e tempo, sozinhos, não determinam a distância. Faltam o movimento inicial e sua evolução, como um histórico de velocidades ou dados suficientes sobre forças e movimento.",
+    "expected_status": "insufficient_evidence",
+    "required_evidence_ids": [],
+    "rubric": {
+      "must_include": [
+        "Explicar que massa e tempo não determinam a trajetória; identificar os dados de movimento ausentes."
+      ],
+      "must_not_include": [
+        "Supor repouso, velocidade ou aceleração constante sem evidência."
+      ]
+    },
+    "tags": [],
+    "missing_information": [
+      "Initial motion and subsequent motion or force history"
+    ],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-04-en",
+    "family_id": "phys-04",
+    "language": "en",
+    "subject": "physics",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "physics-conflict"
+    ],
+    "question": "What constant applied force magnitude was recorded in experiment P, run 17?",
+    "reference_answer": "Record A reports 6 N and record B reports 8 N for the same force and run. The equal-authority records conflict, so no definitive value can be selected.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "force-record-a-en",
+      "force-record-b-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Report 6 N and 8 N and the unresolved conflict."
+      ],
+      "must_not_include": [
+        "Choose one force or invent an average measurement."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-04-pt",
+    "family_id": "phys-04",
+    "language": "pt-BR",
+    "subject": "physics",
+    "category": "conflicting_evidence",
+    "selected_collections": [
+      "physics-conflict"
+    ],
+    "question": "Qual módulo da força aplicada constante foi registrado no experimento P, execução 17?",
+    "reference_answer": "O registro A informa 6 N e o registro B informa 8 N para a mesma força e execução. Os registros de igual autoridade divergem, portanto não é possível selecionar um valor definitivo.",
+    "expected_status": "conflicting_evidence",
+    "required_evidence_ids": [
+      "force-record-a-pt",
+      "force-record-b-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Informar 6 N e 8 N e o conflito não resolvido."
+      ],
+      "must_not_include": [
+        "Escolher uma força ou inventar uma medida média."
+      ]
+    },
+    "tags": [],
+    "missing_information": [],
+    "numeric_answer": null,
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-05-en",
+    "family_id": "phys-05",
+    "language": "en",
+    "subject": "physics",
+    "category": "derivation",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "A constant 20 N force acts parallel to and in the same direction as a 3 m displacement over 4 s. What is its average power?",
+    "reference_answer": "The work is W = 20 × 3 = 60 J. The average power is P = 60 / 4 = 15 W.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "parallel-work-en",
+      "average-power-en"
+    ],
+    "rubric": {
+      "must_include": [
+        "Derive 60 J of work and divide by 4 s to obtain 15 W."
+      ],
+      "must_not_include": [
+        "Confuse joules with watts or omit the time division."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 15,
+      "unit": "W",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  },
+  {
+    "id": "smoke-phys-05-pt",
+    "family_id": "phys-05",
+    "language": "pt-BR",
+    "subject": "physics",
+    "category": "derivation",
+    "selected_collections": [
+      "physics"
+    ],
+    "question": "Uma força constante de 20 N atua paralela e no mesmo sentido de um deslocamento de 3 m em 4 s. Qual é sua potência média?",
+    "reference_answer": "O trabalho é W = 20 × 3 = 60 J. A potência média é P = 60 / 4 = 15 W.",
+    "expected_status": "answered",
+    "required_evidence_ids": [
+      "parallel-work-pt",
+      "average-power-pt"
+    ],
+    "rubric": {
+      "must_include": [
+        "Calcular 60 J de trabalho e dividir por 4 s para obter 15 W."
+      ],
+      "must_not_include": [
+        "Confundir joules e watts ou omitir a divisão pelo tempo."
+      ]
+    },
+    "tags": [
+      "multi_source"
+    ],
+    "missing_information": [],
+    "numeric_answer": {
+      "value": 15,
+      "unit": "W",
+      "tolerance": 0
+    },
+    "review": {
+      "status": "pending_human_review",
+      "reviewer": null,
+      "reviewed_on": null,
+      "notes": ""
+    }
+  }
+]

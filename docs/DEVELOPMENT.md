@@ -70,6 +70,7 @@ uv run ruff check .
 uv run mypy src/professor_ai
 uv run pytest -q
 uv run python scripts/check_docs.py
+uv run python scripts/check_evals.py --check-review-packet
 ```
 
 The default test suite disables network sockets using pytest-socket. Unix-domain sockets are allowed for local event-loop machinery; external TCP connections are blocked. Configuration tests remove inherited `PROFESSOR_AI_` variables, and storage-related tests use temporary directories rather than real learning material.
@@ -77,6 +78,17 @@ The default test suite disables network sockets using pytest-socket. Unix-domain
 After setup, use `uv run --offline --no-sync pytest -q` to run the installed suite without uv dependency resolution. Do not use `--no-sync` before installing the locked environment or after changing dependencies.
 
 CI runs formatting, lint, strict typing, network-blocked tests, and documentation validation on Linux and macOS with Python 3.12. Real-model qualification remains a separately marked, future suite. These checks do not establish RAG quality or Apple Silicon inference performance.
+
+## Development evaluation fixtures
+
+The [smoke corpus](../evals/README.md) contains 30 bilingual proposals and original
+source notes, with annotations stored outside the retrieval corpus. Read the
+[review packet](../evals/REVIEW.md) to review expected behavior. The fixture check
+above verifies structure, hashes, scope, translation metadata, and packet freshness.
+It does not run a model or establish answer quality. Use `--require-reviewed` to
+enforce recorded human approvals; it intentionally fails while proposals remain.
+After editing annotations, run `uv run python scripts/check_evals.py
+--write-review-packet` on one line and commit the refreshed packet.
 
 ## Contribution workflow
 

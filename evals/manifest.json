@@ -1,0 +1,642 @@
+{
+  "schema_version": 1,
+  "dataset_id": "professor-ai-smoke-v1",
+  "split": "smoke-development",
+  "case_file": "cases/smoke.json",
+  "expected_counts": {
+    "cases": 30,
+    "languages": {
+      "en": 15,
+      "pt-BR": 15
+    },
+    "subjects": {
+      "computer_science": 10,
+      "mathematics": 10,
+      "physics": 10
+    }
+  },
+  "documents": [
+    {
+      "id": "binary-search-en",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/binary-search.en.md",
+      "sha256": "7840abe97109166de2092def9b4fc1798b27cce2b94ec580680463962820ab67",
+      "title": "Binary search prerequisite",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "NIST Dictionary of Algorithms and Data Structures: binary search",
+          "url": "https://xlinux.nist.gov/dads/HTML/binarySearch.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "binary-search-pt",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/binary-search.pt.md",
+      "sha256": "5fa22ae9febb5a61eb2a204e308d3712d3c653085ceedc6221169d1deebfbb67",
+      "title": "Pré-requisito da busca binária",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "NIST Dictionary of Algorithms and Data Structures: binary search",
+          "url": "https://xlinux.nist.gov/dads/HTML/binarySearch.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "fixed-width-code-en",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/fixed-width-code.en.md",
+      "sha256": "e5de05943ab346b025c5221fa89846a6c079174de039dd1d01d5304f98b5fb0c",
+      "title": "Practice fixed-width code",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "RFC 4648: octets and binary encodings",
+          "url": "https://www.rfc-editor.org/rfc/rfc4648",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "fixed-width-code-pt",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/fixed-width-code.pt.md",
+      "sha256": "91bed9099f763a3f912025716ad87cf2a39d4f735b66ef23bf737908c98ad8ba",
+      "title": "Código de tamanho fixo para exercício",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "RFC 4648: octets and binary encodings",
+          "url": "https://www.rfc-editor.org/rfc/rfc4648",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "student-primary-key-en",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/student-primary-key.en.md",
+      "sha256": "4ce1cd389b042f55f1ad866e1ff3c2fde6c953babb27ac6c0450cd3293d40fa3",
+      "title": "Practice student table",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "SQLite CREATE TABLE: PRIMARY KEY and NOT NULL",
+          "url": "https://www.sqlite.org/lang_createtable.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "student-primary-key-pt",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/student-primary-key.pt.md",
+      "sha256": "7c0ba19f1eda3468797236175b346fe4607b3c5a5c268a94b95c4746852430ab",
+      "title": "Tabela de estudantes do exercício",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "SQLite CREATE TABLE: PRIMARY KEY and NOT NULL",
+          "url": "https://www.sqlite.org/lang_createtable.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "enrollment-foreign-key-en",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/enrollment-foreign-key.en.md",
+      "sha256": "1196ad1b9a81f626a4802c4756702d0dc6da28b50ed2d715c15abe60704d511b",
+      "title": "Practice enrollment table",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "SQLite foreign key support",
+          "url": "https://www.sqlite.org/foreignkeys.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "enrollment-foreign-key-pt",
+      "collection": "computer-science",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/enrollment-foreign-key.pt.md",
+      "sha256": "12a2ea6e4ee7b36365da0becda16902fd2331c82c525a8908940015ffdcc32af",
+      "title": "Tabela de matrículas do exercício",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "SQLite foreign key support",
+          "url": "https://www.sqlite.org/foreignkeys.html",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "atlas-config-a-en",
+      "collection": "computer-science-conflict",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/atlas-config-a.en.md",
+      "sha256": "693d7aab64fb48b65973e8483f1066ea48f1b86b7b9b596c0ba3be2168a6399c",
+      "title": "Fictional Atlas record A",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "atlas-config-a-pt",
+      "collection": "computer-science-conflict",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/atlas-config-a.pt.md",
+      "sha256": "ea0e006fbebd77c61197eaeb3a51e003464e4f266a17778c1cda8a39f6843c82",
+      "title": "Registro fictício Atlas A",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "atlas-config-b-en",
+      "collection": "computer-science-conflict",
+      "subject": "computer_science",
+      "language": "en",
+      "path": "corpus/computer-science/atlas-config-b.en.md",
+      "sha256": "08d090dd0a0527aea7d06acf4fa8628e9abc94aaf7e8074c7362c22c590a4a1d",
+      "title": "Fictional Atlas record B",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "atlas-config-b-pt",
+      "collection": "computer-science-conflict",
+      "subject": "computer_science",
+      "language": "pt-BR",
+      "path": "corpus/computer-science/atlas-config-b.pt.md",
+      "sha256": "5d0d8f1ba093c8acb2cc7b39324ac9ace4132b77d67e7f39695f2f10d6ab46a3",
+      "title": "Registro fictício Atlas B",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "equivalent-fractions-en",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/equivalent-fractions.en.md",
+      "sha256": "b19c532bc8439ff6500c3e5b1f3429b9ccd9c5196f34ad1ff815b709222210d3",
+      "title": "Equivalent fractions",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Prealgebra 2e: visualize fractions",
+          "url": "https://openstax.org/books/prealgebra-2e/pages/4-1-visualize-fractions",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "equivalent-fractions-pt",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/equivalent-fractions.pt.md",
+      "sha256": "7274dfc07c3c34aca01e1c1a3fbbec18da909f3cd6a172a0806a1b2f5e399ea0",
+      "title": "Frações equivalentes",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Prealgebra 2e: visualize fractions",
+          "url": "https://openstax.org/books/prealgebra-2e/pages/4-1-visualize-fractions",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "linear-equations-en",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/linear-equations.en.md",
+      "sha256": "46ab2e2366dc0aa99c3db3664a4d31534f657f22d71878f068f9c4fa57590b4d",
+      "title": "Linear equation transformations",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra 2e: addition and subtraction properties",
+          "url": "https://openstax.org/books/elementary-algebra-2e/pages/2-1-solve-equations-using-the-subtraction-and-addition-properties-of-equality",
+          "checked_on": "2026-10-23"
+        },
+        {
+          "title": "OpenStax Elementary Algebra 2e: division and multiplication properties",
+          "url": "https://openstax.org/books/elementary-algebra-2e/pages/2-2-solve-equations-using-the-division-and-multiplication-properties-of-equality",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "linear-equations-pt",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/linear-equations.pt.md",
+      "sha256": "ab5a2ae8caaad5524e79002cd4528dcd2d60821cc346fbc1265cba66c7edd3ea",
+      "title": "Transformações de equações lineares",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Elementary Algebra 2e: addition and subtraction properties",
+          "url": "https://openstax.org/books/elementary-algebra-2e/pages/2-1-solve-equations-using-the-subtraction-and-addition-properties-of-equality",
+          "checked_on": "2026-10-23"
+        },
+        {
+          "title": "OpenStax Elementary Algebra 2e: division and multiplication properties",
+          "url": "https://openstax.org/books/elementary-algebra-2e/pages/2-2-solve-equations-using-the-division-and-multiplication-properties-of-equality",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "rectangle-area-en",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/rectangle-area.en.md",
+      "sha256": "03e6bc258af023b848caf142dcebade80a5ba0130b8e0142f3997ffabdf78e40",
+      "title": "Rectangle area",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Prealgebra 2e: properties of rectangles",
+          "url": "https://openstax.org/books/prealgebra-2e/pages/9-4-use-properties-of-rectangles-triangles-and-trapezoids",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "rectangle-area-pt",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/rectangle-area.pt.md",
+      "sha256": "51e94b8208d31b8f2f6ed7d3d63718764b15281355a9ed105d8e046170b3cd27",
+      "title": "Área de um retângulo",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax Prealgebra 2e: properties of rectangles",
+          "url": "https://openstax.org/books/prealgebra-2e/pages/9-4-use-properties-of-rectangles-triangles-and-trapezoids",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "metric-area-en",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/metric-area.en.md",
+      "sha256": "be068ccb54d505c8ceae76574c7ee9665b3a4d1ba229d2ae3716f38bf0a6cbd4",
+      "title": "Metric length and area conversion",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: unit conversion",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/1-3-unit-conversion",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "metric-area-pt",
+      "collection": "mathematics",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/metric-area.pt.md",
+      "sha256": "3e0b0e7c81ec70f0220b50707ed82cdffaa59251775cae033fbbc2bba9ba394b",
+      "title": "Conversão métrica de comprimento e área",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: unit conversion",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/1-3-unit-conversion",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "rectangle-record-a-en",
+      "collection": "mathematics-conflict",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/rectangle-record-a.en.md",
+      "sha256": "9d4307929a020f5e0d26a4a8a3b8cd03bdb78a9a83f40d697e2ee7845e78af56",
+      "title": "Fictional rectangle R record A",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "rectangle-record-a-pt",
+      "collection": "mathematics-conflict",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/rectangle-record-a.pt.md",
+      "sha256": "a93b308bb7fd720a34402178929f86eaf2d2bc0c634c71ae41747ec5b1fd03fc",
+      "title": "Registro fictício A do retângulo R",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "rectangle-record-b-en",
+      "collection": "mathematics-conflict",
+      "subject": "mathematics",
+      "language": "en",
+      "path": "corpus/mathematics/rectangle-record-b.en.md",
+      "sha256": "8fddea91665dd2cc21ed7ffcd2d2d3184ba59304e30e264b18a18ef308687bce",
+      "title": "Fictional rectangle R record B",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "rectangle-record-b-pt",
+      "collection": "mathematics-conflict",
+      "subject": "mathematics",
+      "language": "pt-BR",
+      "path": "corpus/mathematics/rectangle-record-b.pt.md",
+      "sha256": "ee95ad8756f16f9000f93b99aa8b05141e3a007e97ea98fa85ee57681ee24103",
+      "title": "Registro fictício B do retângulo R",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "speed-velocity-en",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/speed-velocity.en.md",
+      "sha256": "2b04ff10b5c06b3d8c01272ea80fbe4d844ec0a7352c4b3767923716ab34d752",
+      "title": "Speed and velocity",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: position, displacement and average velocity",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/3-1-position-displacement-and-average-velocity",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "speed-velocity-pt",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/speed-velocity.pt.md",
+      "sha256": "766ec906928d2cdb946cfb9bfcf1ccd3efd7e01c5bc3286ca90ff4d138f395a7",
+      "title": "Rapidez e velocidade vetorial",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: position, displacement and average velocity",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/3-1-position-displacement-and-average-velocity",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "newton-second-law-en",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/newton-second-law.en.md",
+      "sha256": "7e97e91babb2223e48c55fa606e74e9e217bc686f838057dcf91467adb1a7f77",
+      "title": "Newton second law",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: Newton second law",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/5-3-newtons-second-law",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "newton-second-law-pt",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/newton-second-law.pt.md",
+      "sha256": "089b22305129bfd0d2387374c76b6455da71109fbaa9c59c4097e0acb9dacf83",
+      "title": "Segunda lei de Newton",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: Newton second law",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/5-3-newtons-second-law",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "parallel-work-en",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/parallel-work.en.md",
+      "sha256": "c39db9345c88b9c75b95ca4f1f64b1ad1f7ec5910046fe4563caba2cb9718343",
+      "title": "Work by a parallel constant force",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: work",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "parallel-work-pt",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/parallel-work.pt.md",
+      "sha256": "e2fb680d9808337641dc7566bdac0336789ecdc0acf5c0ae7433a78fe6cfc51e",
+      "title": "Trabalho de uma força constante e paralela",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: work",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/7-1-work",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "average-power-en",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/average-power.en.md",
+      "sha256": "0fc2e0cd5f0423eec5261d1b90eef0f23a340026d921ae46b15e44d6ef44d99f",
+      "title": "Average power",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: power",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "average-power-pt",
+      "collection": "physics",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/average-power.pt.md",
+      "sha256": "0776317ce6388d7afd801b15266a9ebd016979d6fe74e38dac6b1858d6341c09",
+      "title": "Potência média",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "original_note",
+      "references": [
+        {
+          "title": "OpenStax University Physics: power",
+          "url": "https://openstax.org/books/university-physics-volume-1/pages/7-4-power",
+          "checked_on": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "force-record-a-en",
+      "collection": "physics-conflict",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/force-record-a.en.md",
+      "sha256": "7258b4021201c5d5c969d4738cf6537832a03522d7ef96343a9f4f023a434075",
+      "title": "Fictional experiment P record A",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "force-record-a-pt",
+      "collection": "physics-conflict",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/force-record-a.pt.md",
+      "sha256": "29b532b08ab4bcb4f935164e29dd56ae3c3a281d734da1c171b2c2393fe39508",
+      "title": "Registro fictício A do experimento P",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "force-record-b-en",
+      "collection": "physics-conflict",
+      "subject": "physics",
+      "language": "en",
+      "path": "corpus/physics/force-record-b.en.md",
+      "sha256": "d5862e0e31a5a7f5481d2464c219c996d39f34b58083241447a4096fcf74c845",
+      "title": "Fictional experiment P record B",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    },
+    {
+      "id": "force-record-b-pt",
+      "collection": "physics-conflict",
+      "subject": "physics",
+      "language": "pt-BR",
+      "path": "corpus/physics/force-record-b.pt.md",
+      "sha256": "a4bd8a611f2b9ce7f8c0f44c18a5aa26a16ca0e6e271e5d61b688a2d83907760",
+      "title": "Registro fictício B do experimento P",
+      "license": "MIT",
+      "authorship": "AI-assisted original fixture, Professor AI contributors",
+      "kind": "fictional_record",
+      "references": []
+    }
+  ]
+}
