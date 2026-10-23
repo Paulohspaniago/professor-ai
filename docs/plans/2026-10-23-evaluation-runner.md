@@ -47,11 +47,11 @@ builder's decisions, using the existing project contracts:
 
 **Interfaces:** `EvaluationProvider` exposes `name`, `fingerprint`, `retrieve(request: EvaluationRequest, sources: tuple[Evidence, ...]) -> object`, and `generate(request, evidence) -> object`. `run_evaluation(root: Path, provider: EvaluationProvider, *, allow_unreviewed: bool = False, project_revision: str = "unknown", working_tree_dirty: bool | None = None) -> RunReport` validates fixtures, runs stages, and aggregates all cases. Raw provider outputs are validated at stage boundaries.
 
-- [ ] Write tests for the review gate, source scope/no annotation leakage, ordered stage execution, retrieval/generation exceptions, malformed output, duplicate/unknown/cross-language evidence and citations, per-group denominators, timing fields, and configuration fingerprints.
-- [ ] Run `uv run pytest tests/unit/test_evaluation_runner.py -q`; expect missing implementation failure.
-- [ ] Implement typed requests/evidence/answers, provider protocol, isolated case execution, honest metrics, and report metadata. Use monotonic timings and existing SHA-256 contracts.
-- [ ] Run focused tests, strict typing, and full suite; expect all passing.
-- [ ] Commit `feat(evals): run scoped providers and preserve failure diagnostics`.
+- [x] Write tests for the review gate, source scope/no annotation leakage, ordered stage execution, retrieval/generation exceptions, malformed output, duplicate/unknown/cross-language evidence and citations, per-group denominators, timing fields, and configuration fingerprints.
+- [x] Run `uv run pytest tests/unit/test_evaluation_runner.py -q`; expect missing implementation failure.
+- [x] Implement typed requests/evidence/answers, provider protocol, isolated case execution, honest metrics, and report metadata. Use monotonic timings and existing SHA-256 contracts.
+- [x] Run focused tests, strict typing, and full suite; expect all passing.
+- [x] Commit `feat(evals): run scoped providers and preserve failure diagnostics`.
 
 ## Task 2: Offline providers and report artifacts
 
@@ -59,11 +59,11 @@ builder's decisions, using the existing project contracts:
 
 **Interfaces:** `AbstainingProvider()` implements the protocol. `ReplayProvider(path: Path, *, dataset_fingerprint: str, case_ids: set[str])` loads schema-version-1 replay JSON with `dataset_fingerprint` and a `results` mapping; each entry has `evidence_ids` and raw `answer`. Missing cases become case-level errors; unknown IDs or stale bindings reject configuration. `render_report(report: RunReport) -> str` and `write_report(report, output: Path, *, dataset_root: Path) -> None` produce `report.json` and `report.md` in a new directory.
 
-- [ ] Test baseline abstention, bilingual text, replay identity/binding, missing/malformed entries, and fingerprint changes. Test readable errors/metrics, JSON round-trip, existing outputs preserved, and dataset/symlink path rejection.
-- [ ] Run the new focused tests; expect missing implementation failures.
-- [ ] Implement providers and safe report writing. Display numerator/denominator values and explicit ungraded correctness/citation semantics in Markdown.
-- [ ] Run full suite and typing; expect all passing.
-- [ ] Commit `feat(evals): add offline replay providers and run reports`.
+- [x] Test baseline abstention, bilingual text, replay identity/binding, missing/malformed entries, and fingerprint changes. Test readable errors/metrics, JSON round-trip, existing outputs preserved, and dataset/symlink path rejection.
+- [x] Run the new focused tests; expect missing implementation failures.
+- [x] Implement providers and safe report writing. Display numerator/denominator values and explicit ungraded correctness/citation semantics in Markdown.
+- [x] Run full suite and typing; expect all passing.
+- [x] Commit `feat(evals): add offline replay providers and run reports`.
 
 ## Task 3: CLI, documentation, and reproducible handoff
 
@@ -71,11 +71,11 @@ builder's decisions, using the existing project contracts:
 
 **Interfaces:** `professor-ai evaluate --dataset evals --provider abstain|replay --responses PATH --output NEW_DIR --allow-unreviewed --json`. Responses are required only for replay. Defaults: dataset `evals`, abstain provider, new timestamp/UUID directory under `artifacts/evaluations`. Exit 0 means all cases completed and statuses agree; 1 means recorded case errors/status mismatches; 2 means invalid configuration, review gate, or artifact-writing failure. JSON output is a machine-readable command summary; full results live in `report.json`.
 
-- [ ] Test default review blocking without artifacts, explicit draft baseline run (all 30 cases retained), successful replay, malformed input, per-case errors, invalid provider options, path collisions, and valid JSON summaries.
-- [ ] Run integration tests; expect evaluate command absent.
-- [ ] Implement the CLI as a thin composition layer, with best-effort project revision discovery. Document commands, replay schema, metrics/limitations, output safety, and pending corpus qualification. Existing CI's full suite covers this command without a model.
-- [ ] Run Ruff format/lint, strict mypy, full suite, docs, fixture packet, and whitespace checks; run the actual baseline command and inspect both generated artifacts.
-- [ ] Commit `feat(cli): expose reproducible development evaluation runs`.
+- [x] Test default review blocking without artifacts, explicit draft baseline run (all 30 cases retained), successful replay, malformed input, per-case errors, invalid provider options, path collisions, and valid JSON summaries.
+- [x] Run integration tests; expect evaluate command absent.
+- [x] Implement the CLI as a thin composition layer, with best-effort project revision discovery. Document commands, replay schema, metrics/limitations, output safety, and pending corpus qualification. Existing CI's full suite covers this command without a model.
+- [x] Run Ruff format/lint, strict mypy, full suite, docs, fixture packet, and whitespace checks; run the actual baseline command and inspect both generated artifacts.
+- [x] Commit `feat(cli): expose reproducible development evaluation runs`.
 
 ## Handoff
 

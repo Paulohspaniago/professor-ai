@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from professor_ai.evaluation.run_models import ProviderAnswer
 from professor_ai.evaluation.runner import run_evaluation
 
 
@@ -175,3 +176,45 @@ def test_changed_sources_fail_before_provider_execution(evaluation_root):
     with pytest.raises(ValueError, match="hash"):
         run_evaluation(evaluation_root, provider, allow_unreviewed=True)
     assert not provider.calls
+
+
+@pytest.mark.parametrize("invalid", ["mutated", "constructed"])
+def test_invalid_answer_model_instances_become_case_errors(evaluation_root, invalid):
+    class InvalidModelProvider(ScriptedProvider):
+        def generate(self, request, evidence):
+            if invalid == "constructed":
+                return ProviderAnswer.model_construct(
+                    status="answered", text=object(), citations=[]
+                )
+            answer = ProviderAnswer(status="answered", text="valid", citations=[])
+            answer.text = ""
+            return answer
+
+    report = run_evaluation(evaluation_root, InvalidModelProvider(), allow_unreviewed=True)
+
+    assert report.summary.errors == 2
+    assert report.summary.status_matches.numerator == 0
+    assert all(r.error.stage == "generation" for r in report.results)
+    assert '"schema_version":1' in report.model_dump_json()
+
+
+def test_reused_model_outputs_are_owned_snapshots(evaluation_root):
+    class ReusingProvider(ScriptedProvider):
+        def __init__(self):
+            super().__init__()
+            self.answer = ProviderAnswer(status="answered", text="initial", citations=[])
+
+        def generate(self, request, evidence):
+            self.answer.text = request.id
+            self.answer.citations[:] = [e.id for e in evidence]
+            return self.answer
+
+    provider = ReusingProvider()
+    report = run_evaluation(evaluation_root, provider, allow_unreviewed=True)
+    assert [r.answer.text for r in report.results] == [r.case_id for r in report.results]
+    assert report.results[0].answer.citations == ["square-en"]
+    assert report.results[1].answer.citations == ["square-pt"]
+    provider.answer.text = "Later mutation"
+    provider.answer.citations.clear()
+    assert report.results[1].answer.text == "smoke-math-01-pt"
+    assert report.results[1].answer.citations == ["square-pt"]

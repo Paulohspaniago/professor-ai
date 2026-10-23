@@ -26,6 +26,7 @@ class Evidence(Record):
 
 
 class ProviderAnswer(Record):
+    model_config = ConfigDict(extra="forbid", revalidate_instances="always")
     status: Status
     text: Text
     citations: list[Text]
