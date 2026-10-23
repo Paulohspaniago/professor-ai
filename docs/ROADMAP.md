@@ -59,9 +59,10 @@ The critical path is foundation → small evaluation set and runtime → storage
 
 ### S01.04 — Launch the public contribution workflow
 
-- [ ] As a contributor, I can open an issue or PR with enough context for review.
+- [x] As a contributor, I can open an issue or PR with enough context for review.
 - **Size:** S. **Dependencies:** S01.01.
 - **Acceptance:** create the public GitHub repository under the maintainer's chosen account; configure required documentation checks and branch protection where supported; add issue/PR templates, a code of conduct, SECURITY.md with a working private reporting route, and dependency update policy; label starter issues; document maintainer review and release authority; scan the initial tracked files for private data and large binaries before pushing. Application CI remains S01.03 and is added when application code exists.
+- **Delivered 2026-10-22:** [public repository](https://github.com/Paulohspaniago/professor-ai), [passing initial documentation workflow](https://github.com/Paulohspaniago/professor-ai/actions/runs/39841150756), protected `main`, security reporting, seven milestones, and starter issues. See the [repository policy](REPOSITORY.md) for the applied settings.
 
 ## E02 — Evaluation and evidence
 
