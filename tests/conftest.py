@@ -8,6 +8,54 @@ from pathlib import Path
 import pytest
 
 
+@pytest.fixture
+def artifact_payload() -> dict:
+    source = {"repository": "test/model", "revision": "a" * 40}
+    return {
+        "id": "tiny-model",
+        "role": "generator",
+        "upstream": source,
+        "distribution": source,
+        "license": "MIT",
+        "license_evidence": ["https://huggingface.co/test/model/blob/" + "a" * 40 + "/LICENSE"],
+        "provenance": "Test-only original bytes, not real weights.",
+        "source_revision_relation": "direct",
+        "verification": "publisher_metadata_only",
+        "runtime": {
+            "name": "test",
+            "version": "1",
+            "revision": None,
+            "compatibility": "not_tested",
+        },
+        "configuration": {"context_tokens": 8192},
+        "files": [
+            {
+                "source": source,
+                "path": name,
+                "destination": name,
+                "size_bytes": len(content),
+                "sha256": hashlib.sha256(content).hexdigest(),
+                "purpose": purpose,
+            }
+            for name, content, purpose in [
+                ("weights.gguf", b"tiny-model-bytes", "weights"),
+                ("LICENSE", b"Test fixture notice\n", "notice"),
+            ]
+        ],
+    }
+
+
+@pytest.fixture
+def artifact_catalog_path(tmp_path: Path, artifact_payload: dict) -> Path:
+    path = tmp_path / "catalog.json"
+    path.write_text(
+        json.dumps(
+            {"schema_version": 1, "checked_on": "2026-10-23", "artifacts": [artifact_payload]}
+        )
+    )
+    return path
+
+
 @pytest.fixture(autouse=True)
 def isolated_configuration(monkeypatch: pytest.MonkeyPatch) -> None:
     for name in os.environ:
