@@ -129,6 +129,9 @@ def run_evaluation(
     working_tree_dirty: bool | None = None,
 ) -> RunReport:
     bundle = load_dataset(root)
+    binding = getattr(provider, "dataset_fingerprint", None)
+    if binding is not None and binding != bundle.fingerprint:
+        raise ValueError("provider dataset fingerprint does not match the current dataset")
     pending = [c.id for c in bundle.cases if c.review.status != "approved"]
     if pending and not allow_unreviewed:
         raise ValueError(
