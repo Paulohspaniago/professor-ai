@@ -89,7 +89,7 @@ def _check_data_directory(path: Path) -> CapabilityCheck:
                     "no files created."
                 ),
             )
-    except OSError:
+    except (OSError, RuntimeError):
         message = (
             "Cannot inspect the data directory. Check permissions or set PROFESSOR_AI_DATA_DIR."
         )

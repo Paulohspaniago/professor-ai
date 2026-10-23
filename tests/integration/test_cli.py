@@ -63,6 +63,21 @@ def test_invalid_doctor_configuration_still_has_machine_readable_output(
     assert report["checks"][0]["name"] == "configuration"
 
 
+def test_unresolvable_home_directory_returns_a_json_diagnostic(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("PROFESSOR_AI_DATA_DIR", "~professor_ai_nonexistent_user/data")
+
+    result = runner.invoke(app, ["doctor", "--json"])
+
+    assert result.exit_code == 1
+    report = json.loads(result.stdout)
+    assert report["status"] == "blocked"
+    check = next(check for check in report["checks"] if check["name"] == "data_directory")
+    assert check["status"] == "error"
+    assert "PROFESSOR_AI_DATA_DIR" in check["message"]
+
+
 def test_doctor_has_a_readable_default_output(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
