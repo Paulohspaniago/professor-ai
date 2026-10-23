@@ -84,6 +84,10 @@ The critical path is foundation → small evaluation set and runtime → storage
 - [ ] As a contributor, I can run a fixed case set and inspect where the pipeline failed.
 - **Size:** M. **Dependencies:** S01.02, S02.01.
 - **Acceptance:** a CLI loads versioned cases and emits machine-readable results plus a readable report; fake providers test the runner before real inference exists; reports include stage timings, errors, selected evidence, and configuration fingerprints; failed cases stay in denominators.
+- **Progress:** the [development runner](EVALUATION_RUNNER.md) implements synthetic
+  abstention/replay providers, reports, scope checks, and failure-preserving
+  diagnostics. It can exercise proposals through an explicit override;
+  qualification against the human-reviewed S02.01 corpus remains pending.
 
 ### S02.03 — Freeze the MVP development and test partitions
 
