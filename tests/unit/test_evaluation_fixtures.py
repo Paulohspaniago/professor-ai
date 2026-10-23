@@ -119,13 +119,36 @@ def test_unknown_evidence_is_rejected(evaluation_root: Path) -> None:
     assert "evidence" in " ".join(check_dataset(evaluation_root).errors).lower()
 
 
-def test_evidence_cannot_cross_selected_collections(evaluation_root: Path) -> None:
+def test_unknown_selected_collection_is_rejected(evaluation_root: Path) -> None:
     path = evaluation_root / "cases/smoke.json"
     cases = read_json(path)
     cases[0]["selected_collections"] = ["another-collection"]
     write_json(path, cases)
 
     assert "collection" in " ".join(check_dataset(evaluation_root).errors).lower()
+
+
+def test_evidence_cannot_cross_known_selected_collections(evaluation_root: Path) -> None:
+    manifest_path = evaluation_root / "manifest.json"
+    manifest = read_json(manifest_path)
+    alternate = dict(manifest["documents"][0])
+    alternate.update(
+        id="alternate-en", collection="another-collection", path="corpus/alternate.en.md"
+    )
+    (evaluation_root / alternate["path"]).write_bytes(
+        (evaluation_root / "corpus/square.en.md").read_bytes()
+    )
+    manifest["documents"].append(alternate)
+    write_json(manifest_path, manifest)
+    case_path = evaluation_root / "cases/smoke.json"
+    cases = read_json(case_path)
+    cases[0]["selected_collections"] = ["another-collection"]
+    write_json(case_path, cases)
+
+    report = check_dataset(evaluation_root)
+
+    assert not report.passed
+    assert "evidence outside selected collection" in " ".join(report.errors)
 
 
 def test_translated_case_cannot_use_wrong_language_evidence(evaluation_root: Path) -> None:
