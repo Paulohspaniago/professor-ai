@@ -1,6 +1,6 @@
 # Professor AI Architecture
 
-Status: proposed implementation baseline, 2026-10-22. This design documents intended behavior; no application components have been implemented or benchmarked yet.
+Status: implementation baseline, 2026-10-22. The Python package, settings, diagnostics, and health API are implemented. The RAG, storage, inference, and interface sections remain intended behavior, without model or hardware benchmark results.
 
 ## 1. Product contract
 
@@ -52,7 +52,7 @@ The production UI and API share a loopback origin. Restrict hosts and origins, u
 
 ## 4. Proposed source layout
 
-All paths below are future implementation locations, not existing modules.
+The settings, app, CLI, and foundation tests exist. Other paths below describe future implementation locations.
 
 ```text
 src/professor_ai/
