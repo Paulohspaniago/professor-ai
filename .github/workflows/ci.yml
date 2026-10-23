@@ -53,3 +53,7 @@ jobs:
         env:
           UV_OFFLINE: 'true'
         run: uv run --no-sync python scripts/check_docs.py
+      - name: Validate development fixtures and review packet
+        env:
+          UV_OFFLINE: 'true'
+        run: uv run --no-sync python scripts/check_evals.py --check-review-packet

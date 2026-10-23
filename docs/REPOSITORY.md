@@ -6,7 +6,12 @@ Repository: [Paulohspaniago/professor-ai](https://github.com/Paulohspaniago/prof
 
 The public repository includes project documentation, documentation tooling, and the Python application foundation. It is not a stable study-assistant release. Issues and Discussions are enabled; the separate GitHub wiki is disabled so documentation stays versioned with the project.
 
-`main` is the default branch. Contributions use pull requests, required documentation checks, resolved review conversations, and a linear history. Force pushes and branch deletion are blocked. Squash is the enabled merge method, and merged feature branches are automatically deleted.
+`main` is the default branch. Contributions use pull requests, required checks,
+resolved review conversations, and a linear history. The required checks are
+`Documentation checks`, `Python checks (ubuntu-latest)`, and
+`Python checks (macos-latest)`, with branches required to be up to date. Force
+pushes and branch deletion are blocked. Squash is the enabled merge method, and
+merged feature branches are automatically deleted.
 
 Protection applies to administrators as well. The initial policy requires a PR and passing checks but zero mandatory approvals, allowing the sole maintainer to merge their own passing PRs. CODEOWNERS identifies the maintainer for review requests; a mandatory self-approval is not required. Increase the required approval count when there is another active reviewer. External contributors cannot merge without repository write access.
 
@@ -18,7 +23,13 @@ GitHub Actions uses read-only default token permissions and cannot approve pull 
 
 Repository security settings include Dependabot vulnerability alerts, automated security fixes, secret scanning and push protection, and private vulnerability reporting where GitHub makes them available. Report actual feature availability when applying this policy; do not claim an unavailable feature is enabled. See [SECURITY.md](../SECURITY.md) for reporting instructions.
 
-The Python workflow checks formatting, lint, strict typing, network-blocked behavior tests, and documentation on Linux and macOS with Python 3.12. Documentation integrity retains its separate check. Neither workflow establishes retrieval quality or model performance; release evaluations remain E02/E09 work.
+The Python workflow checks formatting, lint, strict typing, network-blocked behavior
+tests, documentation, and development-fixture integrity/review-packet freshness on
+Linux and macOS with Python 3.12. Documentation integrity retains its separate
+check. Draft fixture checks do not imply human approval; the explicit human-review
+gate is documented in [evals/README.md](../evals/README.md). Neither workflow
+establishes retrieval quality or model performance; release evaluations remain
+E02/E09 work.
 
 ## Work organization
 
@@ -26,7 +37,7 @@ Milestones mirror M0–M6 from the [roadmap](ROADMAP.md). Labels identify storie
 
 Initial contribution paths:
 
-- [S01.02: Python application foundation](https://github.com/Paulohspaniago/professor-ai/issues/2)
+- [S01.02: Python application foundation (completed)](https://github.com/Paulohspaniago/professor-ai/issues/2)
 - [S02.01: Reviewed learning corpus](https://github.com/Paulohspaniago/professor-ai/issues/3)
 - [First contribution: one bilingual physics fixture](https://github.com/Paulohspaniago/professor-ai/issues/4)
 
