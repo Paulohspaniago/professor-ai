@@ -38,4 +38,4 @@ The original discussion also drew inspiration from a small-model training experi
 
 ## Current next step
 
-Execute the [foundation plan](plans/2026-10-22-foundation.md), build a reviewed evaluation corpus, and qualify a local runtime. Then deliver the CLI import → retrieve → answer workflow before expanding the interface and supported content formats.
+The [foundation plan](plans/2026-10-22-foundation.md) is implemented. Next, build a reviewed evaluation corpus and qualify a local runtime. Then deliver the CLI import → retrieve → answer workflow before expanding the interface and supported content formats.

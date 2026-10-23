@@ -10,6 +10,8 @@
 
 **Spec:** [Architecture](../ARCHITECTURE.md), with product scope and story acceptance in the [roadmap](../ROADMAP.md#e01--foundation-and-community).
 
+**Implementation status:** Implemented on 2026-10-23. Configuration, health, diagnostics, CLI, clean-checkout installation, offline checks, and wheel build were validated. The checklist below records the execution; ongoing commands are maintained in [DEVELOPMENT.md](../DEVELOPMENT.md).
+
 ## Global Constraints
 
 - Code, identifiers, comments, commits, and technical documentation are in English.
@@ -47,7 +49,7 @@
 | .github/workflows/ci.yml | Reproducible automated checks |
 | docs/DEVELOPMENT.md | Commands proven against the implemented environment |
 
-Application paths are planned. The documentation checker already exists as part of the public repository setup; reuse it rather than recreating it.
+The application paths below were implemented in this delivery. The existing documentation checker was reused and adjusted to exclude generated caches and local planning scratch.
 
 ## Task 1: Create the installable package
 
@@ -55,11 +57,11 @@ Application paths are planned. The documentation checker already exists as part 
 
 **Interfaces:** produces an installable `professor_ai` package with `__version__ = "0.1.0.dev0"`. Later tasks add the `professor-ai` console entry point. No model package is a required dependency at this stage.
 
-- [ ] Define the `src/` package layout, Python 3.12 baseline, MIT metadata, runtime dependencies, and a `dev` dependency group containing Ruff, mypy, pytest, and HTTPX.
-- [ ] Configure Ruff formatting/lint rules and mypy for the package; use pytest's `tests/` discovery. Configure only checks that will actually run.
-- [ ] Resolve dependencies using uv, commit the generated lockfile, and install with `uv sync --locked --group dev`.
-- [ ] Run `uv run python -c 'import professor_ai; print(professor_ai.__version__)'`; expect `0.1.0.dev0` with exit code 0.
-- [ ] Review the dependency tree for unexpected heavy inference packages, then commit this independently reviewable bootstrap.
+- [x] Define the `src/` package layout, Python 3.12 baseline, MIT metadata, runtime dependencies, and a `dev` dependency group containing Ruff, mypy, pytest, and HTTPX.
+- [x] Configure Ruff formatting/lint rules and mypy for the package; use pytest's `tests/` discovery. Configure only checks that will actually run.
+- [x] Resolve dependencies using uv, commit the generated lockfile, and install with `uv sync --locked --group dev`.
+- [x] Run `uv run python -c 'import professor_ai; print(professor_ai.__version__)'`; expect `0.1.0.dev0` with exit code 0.
+- [x] Review the dependency tree for unexpected heavy inference packages, then commit this independently reviewable bootstrap.
 
 This task is package configuration; it needs an installation check, not a test that merely repeats metadata.
 
@@ -69,11 +71,11 @@ This task is package configuration; it needs an installation check, not a test t
 
 **Interfaces:** `Settings` has `data_dir: Path`, `host: Literal["127.0.0.1"] = "127.0.0.1"`, and `port: int = 8765` constrained to 1–65535. `load_settings() -> Settings` reads `PROFESSOR_AI_`-prefixed environment variables and defaults `data_dir` using `platformdirs.user_data_path("ProfessorAI", appauthor=False)`. `create_app(settings: Settings) -> FastAPI` exposes `GET /health`.
 
-- [ ] Write settings tests for the default loopback address, port bounds, a temporary data path containing spaces/accents, and rejection of `0.0.0.0`. Assert validation failures rather than matching incidental exception wording.
-- [ ] Write a health test using HTTPX/FastAPI's test client. Assert status 200 and exactly `{"status": "ok", "version": "0.1.0.dev0", "model_status": "not_configured"}`. Assert no model download or data-directory creation occurs merely by importing the app or requesting health.
-- [ ] Run `uv run pytest tests/unit/test_settings.py tests/integration/test_health.py -q`; confirm failures are due to the missing behavior.
-- [ ] Implement the two modules and their typed interfaces. Configuration validation must happen before any server starts. A healthy API is not reported as a ready inference engine.
-- [ ] Run the same tests; expect all passing. Run `uv run mypy src/professor_ai` and `uv run ruff check .`; resolve real failures and commit.
+- [x] Write settings tests for the default loopback address, port bounds, a temporary data path containing spaces/accents, and rejection of `0.0.0.0`. Assert validation failures rather than matching incidental exception wording.
+- [x] Write a health test using HTTPX/FastAPI's test client. Assert status 200 and exactly `{"status": "ok", "version": "0.1.0.dev0", "model_status": "not_configured"}`. Assert no model download or data-directory creation occurs merely by importing the app or requesting health.
+- [x] Run `uv run pytest tests/unit/test_settings.py tests/integration/test_health.py -q`; confirm failures are due to the missing behavior.
+- [x] Implement the two modules and their typed interfaces. Configuration validation must happen before any server starts. A healthy API is not reported as a ready inference engine.
+- [x] Run the same tests; expect all passing. Run `uv run mypy src/professor_ai` and `uv run ruff check .`; resolve real failures and commit.
 
 ## Task 3: Add useful diagnostics and a local server command
 
@@ -81,12 +83,12 @@ This task is package configuration; it needs an installation check, not a test t
 
 **Interfaces:** `CapabilityCheck` contains `name: str`, `required: bool`, `status: Literal["ok", "missing", "error"]`, and `message: str`. `DiagnosticReport` contains `status: Literal["ready", "blocked"]` and `checks: list[CapabilityCheck]`. `inspect_environment(settings: Settings) -> DiagnosticReport` probes the Python version, SQLite FTS5 using a temporary in-memory table, and the nearest existing parent of the configured data directory for write access. The report includes an optional missing-model check. `cli.app` is a Typer application providing `professor-ai doctor --json` and `professor-ai serve`.
 
-- [ ] Write tests: missing FTS5 blocks readiness; a missing optional model does not; an unwritable data parent blocks readiness; diagnostics do not modify the user's data. Inject probe results where host-dependent behavior would make tests nondeterministic.
-- [ ] Write CLI tests for JSON matching the report schema, exit code 0 on readiness and 1 on blocked diagnostics, and invalid settings failing before `serve` invokes Uvicorn. Verify `serve` passes the validated loopback host and port to the runner.
-- [ ] Run `uv run pytest tests/unit/test_doctor.py tests/integration/test_cli.py -q`; confirm the expected failures.
-- [ ] Implement diagnostics and CLI commands. Error messages explain what is missing and which documented setup step resolves it. Keep model management out of this task.
-- [ ] Run those tests, then run `uv run professor-ai doctor --json` on the development machine. Record the actual capability report; do not hard-code a successful result into documentation.
-- [ ] Start `uv run professor-ai serve`, request `/health` locally, and stop the owned process. Confirm the health contract and clean shutdown, then commit.
+- [x] Write tests: missing FTS5 blocks readiness; a missing optional model does not; an unwritable data parent blocks readiness; diagnostics do not modify the user's data. Inject probe results where host-dependent behavior would make tests nondeterministic.
+- [x] Write CLI tests for JSON matching the report schema, exit code 0 on readiness and 1 on blocked diagnostics, and invalid settings failing before `serve` invokes Uvicorn. Verify `serve` passes the validated loopback host and port to the runner.
+- [x] Run `uv run pytest tests/unit/test_doctor.py tests/integration/test_cli.py -q`; confirm the expected failures.
+- [x] Implement diagnostics and CLI commands. Error messages explain what is missing and which documented setup step resolves it. Keep model management out of this task.
+- [x] Run those tests, then run `uv run professor-ai doctor --json` on the development machine. Record the actual capability report; do not hard-code a successful result into documentation.
+- [x] Start `uv run professor-ai serve`, request `/health` locally, and stop the owned process. Confirm the health contract and clean shutdown, then commit.
 
 ## Task 4: Make the foundation reproducible in CI and documentation
 
@@ -94,12 +96,12 @@ This task is package configuration; it needs an installation check, not a test t
 
 **Interfaces:** `python scripts/check_docs.py` returns 0 when local Markdown targets and fragments resolve and nonzero with file/line diagnostics otherwise. It ignores external URLs and explicitly marked illustrative source paths. No network requests are required.
 
-- [ ] Run the existing documentation checker and extend it only if application documentation introduces unsupported link forms. Check changed behavior against a temporary missing-target fixture and a known-valid fixture. Do not add application tests solely for documentation wording.
-- [ ] Configure CI on Linux and macOS with Python 3.12, a pinned uv version, and actions pinned to verified revisions. Install with `uv sync --locked --group dev` and run the commands below.
-- [ ] Run `uv run ruff format --check .`, `uv run ruff check .`, `uv run mypy src/professor_ai`, `uv run pytest -q`, and `uv run python scripts/check_docs.py`; expect zero failures.
-- [ ] Repeat installation and those checks in a clean temporary checkout without the current virtual environment. Confirm tests make no external network requests and do not read a real user database.
-- [ ] Document the proven install, doctor, serve, and check commands. State that retrieval/generation remain unimplemented. Add no passing-build badge until the public workflow actually passes.
-- [ ] Commit and attach check output to the PR for S01.02/S01.03. Only mark those stories done after reviewing their acceptance criteria.
+- [x] Run the existing documentation checker and extend it only if application documentation introduces unsupported link forms. Check changed behavior against a temporary missing-target fixture and a known-valid fixture. Do not add application tests solely for documentation wording.
+- [x] Configure CI on Linux and macOS with Python 3.12, a pinned uv version, and actions pinned to verified revisions. Install with `uv sync --locked --group dev` and run the commands below.
+- [x] Run `uv run ruff format --check .`, `uv run ruff check .`, `uv run mypy src/professor_ai`, `uv run pytest -q`, and `uv run python scripts/check_docs.py`; expect zero failures.
+- [x] Repeat installation and those checks in a clean temporary checkout without the current virtual environment. Confirm tests make no external network requests and do not read a real user database.
+- [x] Document the proven install, doctor, serve, and check commands. State that retrieval/generation remain unimplemented. Add no passing-build badge until the public workflow actually passes.
+- [x] Commit and attach check output to the PR for S01.02/S01.03. Only mark those stories done after reviewing their acceptance criteria.
 
 ## Handoff and subsequent plans
 
