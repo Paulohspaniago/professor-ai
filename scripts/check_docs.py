@@ -4,10 +4,9 @@
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 import re
+from pathlib import Path
 from urllib.parse import unquote, urlsplit
-
 
 EXCLUDED = {".git", ".venv", "node_modules", "data", "models", "artifacts"}
 STORY = re.compile(r"\bS\d{2}\.\d{2}\b")
@@ -32,7 +31,8 @@ def anchors(text: str) -> set[str]:
 
 def validate(root: Path) -> tuple[list[str], int, int]:
     files = sorted(
-        path for path in root.rglob("*.md")
+        path
+        for path in root.rglob("*.md")
         if not EXCLUDED.intersection(path.relative_to(root).parts)
     )
     errors: list[str] = []
@@ -74,7 +74,7 @@ def validate(root: Path) -> tuple[list[str], int, int]:
             errors.append("ROADMAP.md: duplicate story IDs")
         dependencies: dict[str, list[str]] = {}
         for index in range(1, len(blocks), 2):
-            story_id, block = blocks[index:index + 2]
+            story_id, block = blocks[index : index + 2]
             if not re.search(r"^- \[[ x]\] As an? ", block, re.M):
                 errors.append(f"{story_id}: missing user-story checkbox")
             if "**Acceptance:**" not in block:
