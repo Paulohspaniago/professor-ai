@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "professor-ai"
+version = "0.1.0.dev0"
+description = "A local study assistant grounded in your learning materials."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Professor AI contributors" }]
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "platformdirs>=4.3,<5",
+  "typer>=0.15,<1",
+  "uvicorn>=0.34,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Paulohspaniago/professor-ai"
+Issues = "https://github.com/Paulohspaniago/professor-ai/issues"
+
+[project.scripts]
+professor-ai = "professor_ai.cli:app"
+
+[dependency-groups]
+dev = [
+  "httpx>=0.28,<1",
+  "mypy>=1.14,<2",
+  "pytest>=8.3,<10",
+  "pytest-socket>=0.7,<1",
+  "ruff>=0.9,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/professor_ai"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers --disable-socket --allow-unix-socket"
+markers = ["model: optional real-model qualification tests"]

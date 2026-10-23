@@ -1,6 +1,6 @@
 # Contributing to Professor AI
 
-Thank you for helping build a local, evidence-based study assistant. The project is currently in its planning stage. Documentation checks are available; the application development environment and its CI remain tracked under [E01](docs/ROADMAP.md#e01--foundation-and-community).
+Thank you for helping build a local, evidence-based study assistant. The Python foundation and its behavior checks are implemented; RAG and inference remain roadmap work. Start with the [development guide](docs/DEVELOPMENT.md) for environment setup and required checks.
 
 ## Choose a contribution
 
@@ -14,7 +14,7 @@ Fork the repository, create a short-lived branch, and submit a pull request agai
 python3 scripts/check_docs.py
 ```
 
-This checks local Markdown links, heading references, story IDs, and roadmap dependency cycles. The GitHub Actions workflow also checks commit whitespace. It does not evaluate application behavior or model quality. The future application development interpreter remains Python 3.12.
+This checks local Markdown links, heading references, story IDs, and roadmap dependency cycles. The documentation workflow also checks commit whitespace. Application behavior has a separate Python CI workflow; model quality requires later evaluation. The application development interpreter is Python 3.12.
 
 ## Working conventions
 
@@ -29,7 +29,7 @@ This checks local Markdown links, heading references, story IDs, and roadmap dep
 
 ## Before a pull request
 
-Verify the acceptance criteria of the linked story, update affected documentation, and record which checks ran. When the foundation is implemented, its documented lint, typing, and test commands become the required baseline. There is no application installation command yet.
+Verify the acceptance criteria of the linked story, update affected documentation, and record which checks ran. Run the formatting, lint, typing, tests, and documentation commands in [DEVELOPMENT.md](docs/DEVELOPMENT.md). The default tests require no model and block network connections.
 
 Changes to persistence formats, public contracts, dependencies, or model defaults should include a short decision record explaining alternatives and migration effects. A model default change also needs the comparison described in [EVALUATION.md](docs/EVALUATION.md).
 

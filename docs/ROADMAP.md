@@ -46,16 +46,18 @@ The critical path is foundation → small evaluation set and runtime → storage
 
 ### S01.02 — Bootstrap a reproducible local application
 
-- [ ] As a developer, I can install the supported environment and run a diagnostic command from a fresh checkout.
+- [x] As a developer, I can install the supported environment and run a diagnostic command from a fresh checkout.
 - **Size:** M. **Dependencies:** S01.01.
 - **Acceptance:** Python 3.12 and Node 22.12+ development requirements are explicit; uv and npm lockfiles are committed once their packages exist; a health endpoint and CLI diagnostic work without downloading a model; missing dependencies produce actionable messages; local data defaults outside the checkout.
 - **Verification:** follow the [foundation implementation plan](plans/2026-10-22-foundation.md) on a clean checkout.
+- **Implemented 2026-10-23:** locked Python 3.12 package, validated loopback settings, model-independent health API, and CLI diagnostics. Clean-checkout installation, offline checks, and wheel build passed; see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ### S01.03 — Make automated checks useful to contributors
 
-- [ ] As a maintainer, I receive deterministic feedback before merging a change.
+- [x] As a maintainer, I receive deterministic feedback before merging a change.
 - **Size:** M. **Dependencies:** S01.02.
 - **Acceptance:** CI runs Python lint/format/type checks and behavior tests; frontend checks are added with the frontend; real-model tests are separately marked; no credentials or downloaded model are needed for the default suite; documentation links are checked.
+- **Implemented 2026-10-23:** Python CI matrix for Linux/macOS, pinned Actions and uv, formatting, lint, strict typing, network-blocked behavior tests, and documentation checks. Real-model tests remain a separate future suite.
 
 ### S01.04 — Launch the public contribution workflow
 

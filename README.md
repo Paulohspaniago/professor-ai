@@ -4,7 +4,19 @@
 
 Professor AI aims to help students study multiple subjects and work through exam questions using a private, user-managed knowledge base. Documents, retrieval, embeddings, and answer generation run on the user's computer after dependencies and models have been downloaded.
 
-> **Project status: planning.** This repository currently contains the project design, roadmap, and contribution guidance. There is no runnable application, released package, or measured performance result yet. Features below are planned.
+> **Project status: foundation development.** The Python package, local settings, CLI diagnostics, and health API are implemented. Learning-material ingestion, RAG, inference, and the web interface remain planned. There is no stable application release or measured model-performance result yet.
+
+## Run the foundation
+
+With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run from the repository root:
+
+```bash
+uv sync --locked --group dev
+uv run professor-ai doctor
+uv run professor-ai serve
+```
+
+The health endpoint is `http://127.0.0.1:8765/health`. No model is needed for these commands. See the [development guide](docs/DEVELOPMENT.md) for configuration, troubleshooting, and the required checks.
 
 ## What we are building
 
@@ -44,8 +56,9 @@ These are proposed project choices, not a tested compatibility matrix. See the [
 5. [Foundation implementation plan](docs/plans/2026-10-22-foundation.md)
 6. [Contributing](CONTRIBUTING.md)
 7. [Repository maintenance and security settings](docs/REPOSITORY.md)
+8. [Development and local setup](docs/DEVELOPMENT.md)
 
-The first vertical slice will import a small document collection, retrieve evidence, and produce a cited answer through a CLI. The interface follows that tested path. Installation instructions will be added when a clean-checkout workflow exists.
+The next vertical slice will import a small document collection, retrieve evidence, and produce a cited answer through the CLI. The interface follows that tested path. Current installation runs the foundation only.
 
 ## Contributing
 

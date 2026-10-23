@@ -14,4 +14,4 @@ List the checks you ran and their results. For model or retrieval changes, link 
 - [ ] No private documents, credentials, local databases, or model binaries are included.
 - [ ] Third-party content includes its provenance and redistribution terms.
 
-The application is not implemented yet. Do not claim application tests or model benchmarks passed unless you actually ran them.
+The Python foundation exists; RAG and inference remain planned. Do not claim application tests or model benchmarks passed unless you actually ran them.

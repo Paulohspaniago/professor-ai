@@ -4,7 +4,7 @@ Repository: [Paulohspaniago/professor-ai](https://github.com/Paulohspaniago/prof
 
 ## Initial public setup
 
-The public repository starts with project documentation and documentation tooling. It is not an application release. Issues and Discussions are enabled; the separate GitHub wiki is disabled so documentation stays versioned with the project.
+The public repository includes project documentation, documentation tooling, and the Python application foundation. It is not a stable study-assistant release. Issues and Discussions are enabled; the separate GitHub wiki is disabled so documentation stays versioned with the project.
 
 `main` is the default branch. Contributions use pull requests, required documentation checks, resolved review conversations, and a linear history. Force pushes and branch deletion are blocked. Squash is the enabled merge method, and merged feature branches are automatically deleted.
 
@@ -14,11 +14,11 @@ Protection applies to administrators as well. The initial policy requires a PR a
 
 The `Documentation checks` job validates local Markdown links, heading references, story IDs, and dependency cycles. It runs on pushes to `main`, pull requests, and manual dispatch. The check name is stable because branch protection references it.
 
-GitHub Actions uses read-only default token permissions and cannot approve pull requests. The checkout action is pinned to a full official commit revision and does not persist credentials. Fork workflows require approval for outside contributors. Dependabot proposes GitHub Actions updates weekly; dependency managers for application packages will be added when those packages exist.
+GitHub Actions uses read-only default token permissions and cannot approve pull requests. Actions are pinned to full official commit revisions, and checkout does not persist credentials. Fork workflows require approval for outside contributors. Dependabot proposes GitHub Actions and uv dependency updates weekly.
 
 Repository security settings include Dependabot vulnerability alerts, automated security fixes, secret scanning and push protection, and private vulnerability reporting where GitHub makes them available. Report actual feature availability when applying this policy; do not claim an unavailable feature is enabled. See [SECURITY.md](../SECURITY.md) for reporting instructions.
 
-The CI currently proves documentation integrity, not application correctness, retrieval quality, or model performance. Add application checks through S01.03 and release evaluations through E02/E09.
+The Python workflow checks formatting, lint, strict typing, network-blocked behavior tests, and documentation on Linux and macOS with Python 3.12. Documentation integrity retains its separate check. Neither workflow establishes retrieval quality or model performance; release evaluations remain E02/E09 work.
 
 ## Work organization
 
