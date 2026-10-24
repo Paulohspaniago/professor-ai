@@ -5,6 +5,7 @@ import pytest
 from typer.testing import CliRunner
 
 from professor_ai.cli import app
+from professor_ai.model_artifacts.catalog import artifact_fingerprint, find_artifact, load_catalog
 from professor_ai.model_artifacts.store import fetch_artifact
 
 runner = CliRunner()
@@ -139,3 +140,35 @@ def test_transfer_failure_keeps_machine_readable_output(
     )
     assert result.exit_code == 1
     assert json.loads(result.stdout)["status"] == "failed"
+
+
+@pytest.mark.parametrize(
+    "receipt_bytes", [b"not JSON", b"\xff", b" " * 4097], ids=["json", "utf8", "size"]
+)
+def test_invalid_staged_receipt_keeps_machine_readable_output(
+    artifact_catalog_path, tmp_path, receipt_bytes
+):
+    artifact = find_artifact(load_catalog(artifact_catalog_path), "tiny-model")
+    root = tmp_path / "store"
+    staging = root / ".downloads" / f"{artifact.id}-{artifact_fingerprint(artifact)}"
+    staging.mkdir(parents=True)
+    (staging / "weights.gguf").write_bytes(b"tiny-model-bytes")
+    (staging / "LICENSE").write_bytes(b"Test fixture notice\n")
+    (staging / ".receipt.json").write_bytes(receipt_bytes)
+    result = runner.invoke(
+        app,
+        [
+            "models",
+            "fetch",
+            "tiny-model",
+            "--catalog",
+            str(artifact_catalog_path),
+            "--directory",
+            str(root),
+            "--json",
+        ],
+    )
+    assert result.exit_code == 1
+    assert json.loads(result.stdout)["status"] == "failed"
+    assert (staging / ".receipt.json").read_bytes() == receipt_bytes
+    assert not (root / artifact.id).exists()

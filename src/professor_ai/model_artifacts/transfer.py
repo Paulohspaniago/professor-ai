@@ -28,7 +28,13 @@ def transfer_file(file: RemoteFile, target: Path, partial: Path, client: httpx.C
     if target.exists():
         verify_file(target, file)
         return
-    offset = partial.stat().st_size if partial.exists() else 0
+    if partial.exists():
+        metadata = partial.stat()
+        if metadata.st_nlink != 1:
+            raise ArtifactStoreError(f"hardlinked managed partial is not writable: {partial}")
+        offset = metadata.st_size
+    else:
+        offset = 0
     if offset > file.size_bytes:
         raise ArtifactStoreError(f"oversized partial; remove it before retrying: {partial}")
     if offset == file.size_bytes:

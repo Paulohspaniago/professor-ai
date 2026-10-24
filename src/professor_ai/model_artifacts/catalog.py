@@ -84,11 +84,19 @@ class Artifact(Record):
 
     @model_validator(mode="after")
     def layout_and_purposes(self) -> Self:
-        paths = [PurePosixPath(f.destination) for f in self.files]
+        paths = [PurePosixPath(f.destination.casefold()) for f in self.files]
         if len(paths) != len(set(paths)):
             raise ValueError("duplicate artifact destinations")
         if any(a in b.parents for a in paths for b in paths if a != b):
             raise ValueError("artifact file/directory collision")
+        spellings: dict[str, str] = {}
+        for file in self.files:
+            path = PurePosixPath(file.destination)
+            for component in (path, *path.parents):
+                name = str(component)
+                previous = spellings.setdefault(name.casefold(), name)
+                if previous != name:
+                    raise ValueError("artifact path case collision")
         purposes = {f.purpose for f in self.files}
         if not {"weights", "notice"}.issubset(purposes):
             raise ValueError("artifacts need weights and notice/license evidence files")

@@ -4,7 +4,7 @@ from types import SimpleNamespace
 import httpx
 import pytest
 
-from professor_ai.model_artifacts.catalog import find_artifact, load_catalog
+from professor_ai.model_artifacts.catalog import artifact_fingerprint, find_artifact, load_catalog
 from professor_ai.model_artifacts.store import ArtifactStoreError, fetch_artifact, verify_artifact
 
 BLOBS = {"weights.gguf": b"tiny-model-bytes", "LICENSE": b"Test fixture notice\n"}
@@ -199,3 +199,50 @@ def test_verify_missing_store_is_read_only(artifact_catalog_path, tmp_path):
     report = verify_artifact(candidate(artifact_catalog_path), root)
     assert report.status == "missing"
     assert not root.exists()
+
+
+def test_hardlinked_partial_cannot_modify_an_external_file(artifact_catalog_path, tmp_path):
+    artifact = candidate(artifact_catalog_path)
+    root = tmp_path / "models"
+    interrupt(artifact, root)
+    partial = next(root.rglob("*.part"))
+    outside = tmp_path / "outside"
+    outside.write_bytes(partial.read_bytes())
+    partial.unlink()
+    partial.hardlink_to(outside)
+    with httpx.Client(transport=httpx.MockTransport(response)) as client:
+        with pytest.raises(ArtifactStoreError, match="hardlink"):
+            fetch_artifact(artifact, root, client=client)
+    assert outside.read_bytes() == b"tiny-"
+    assert verify_artifact(artifact, root).status == "missing"
+
+
+@pytest.mark.parametrize("extra_kind", ["file", "symlink"])
+def test_unlisted_staged_entries_are_not_published(artifact_catalog_path, tmp_path, extra_kind):
+    artifact = candidate(artifact_catalog_path)
+    root = tmp_path / "models"
+    interrupt(artifact, root)
+    staging = root / ".downloads" / f"{artifact.id}-{artifact_fingerprint(artifact)}"
+    extra = staging / "unlisted"
+    if extra_kind == "symlink":
+        extra.symlink_to(tmp_path / "absent")
+    else:
+        extra.write_bytes(b"unexpected")
+    with httpx.Client(transport=httpx.MockTransport(response)) as client:
+        with pytest.raises(ArtifactStoreError, match="unlisted"):
+            fetch_artifact(artifact, root, client=client)
+    assert extra.exists() or extra.is_symlink()
+    assert verify_artifact(artifact, root).status == "missing"
+
+
+def test_verify_rejects_unlisted_installed_entries(artifact_catalog_path, tmp_path):
+    artifact = candidate(artifact_catalog_path)
+    root = tmp_path / "models"
+    with httpx.Client(transport=httpx.MockTransport(response)) as client:
+        report = fetch_artifact(artifact, root, client=client)
+    extra = Path(report.path) / "unlisted"
+    extra.write_bytes(b"unexpected")
+    checked = verify_artifact(artifact, root)
+    assert checked.status == "invalid"
+    assert "unlisted" in checked.errors[0]
+    assert extra.read_bytes() == b"unexpected"

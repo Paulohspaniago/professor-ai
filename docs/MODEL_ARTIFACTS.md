@@ -17,6 +17,8 @@ uv run professor-ai models verify qwen3.5-4b-q4_k_m --json
 files and computes SHA-256; it creates no directory and makes no network request.
 All commands accept `--catalog PATH` for an explicitly supplied local catalog.
 Such catalogs must satisfy the same immutable-reference and path constraints.
+Destination paths must be distinct even on case-insensitive filesystems, including
+the spelling of shared parent directories.
 
 | ID | Weight bytes | Complete snapshot bytes | Declared license |
 | --- | --- | --- | --- |
@@ -80,7 +82,10 @@ and Ctrl+C release the owned lock. A killed process/power interruption can leave
 a stale lock: confirm its recorded PID is no longer acquiring the model before
 removing that exact lock, then retry. Oversized or complete-but-corrupt partials
 need inspection/removal before retrying; they are never silently installed.
-The store rejects symlink components below its resolved root. This is a local
+The store rejects symlink components below its resolved root and hardlinked
+partials. Before publication and during verification, it rejects entries outside
+the catalog-defined tree and its receipt. Malformed or oversized receipts fail
+with a structured error while preserving staged files for inspection. This is a local
 cooperative cache, not protection against a hostile process mutating the filesystem.
 
 ## Sources, terms, and pending provenance

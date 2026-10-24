@@ -50,6 +50,21 @@ def test_paths_cannot_alias_files_as_directories(artifact_payload):
         Artifact.model_validate(artifact_payload)
 
 
+@pytest.mark.parametrize(
+    "first,destination",
+    [
+        ("weights.gguf", "WEIGHTS.GGUF"),
+        ("weights.gguf", "WEIGHTS.GGUF/LICENSE"),
+        ("Assets/weights.gguf", "assets/LICENSE"),
+    ],
+)
+def test_case_aliases_are_rejected_before_acquisition(artifact_payload, first, destination):
+    artifact_payload["files"][0]["destination"] = first
+    artifact_payload["files"][1]["destination"] = destination
+    with pytest.raises(ValidationError, match="duplicate|collision"):
+        Artifact.model_validate(artifact_payload)
+
+
 def test_duplicate_files_and_artifacts_are_rejected(artifact_payload):
     artifact_payload["files"].append(artifact_payload["files"][0])
     with pytest.raises(ValidationError, match="duplicate"):

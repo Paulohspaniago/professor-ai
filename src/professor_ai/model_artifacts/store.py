@@ -3,6 +3,7 @@
 import json
 import os
 import shutil
+import stat
 from contextlib import nullcontext
 from pathlib import Path
 from typing import Literal
@@ -48,6 +49,33 @@ def _receipt(artifact: Artifact) -> dict[str, object]:
     }
 
 
+def _verify_receipt(path: Path, artifact: Artifact) -> None:
+    with path.open("rb") as stream:
+        content = stream.read(4097)
+    if len(content) > 4096:
+        raise ArtifactStoreError("artifact receipt exceeds size limit")
+    try:
+        matches = json.loads(content) == _receipt(artifact)
+    except (ValueError, RecursionError):
+        raise ArtifactStoreError("artifact receipt is not valid JSON") from None
+    if not matches:
+        raise ArtifactStoreError("artifact receipt does not match catalog identity")
+
+
+def _verify_inventory(root: Path, artifact: Artifact) -> None:
+    expected_files = {Path(file.destination) for file in artifact.files} | {Path(RECEIPT)}
+    expected_dirs = {parent for file in expected_files for parent in file.parents}
+    pending = [root]
+    while pending:
+        for entry in pending.pop().iterdir():
+            relative = entry.relative_to(root)
+            mode = entry.lstat().st_mode
+            if relative in expected_dirs and stat.S_ISDIR(mode):
+                pending.append(entry)
+            elif relative not in expected_files or not stat.S_ISREG(mode):
+                raise ArtifactStoreError(f"unlisted or non-regular artifact entry: {relative}")
+
+
 def verify_artifact(artifact: Artifact, root: Path) -> InstallReport:
     artifact = Artifact.model_validate(artifact)
     path = root.resolve() / artifact.id / artifact_fingerprint(artifact)
@@ -57,13 +85,13 @@ def verify_artifact(artifact: Artifact, root: Path) -> InstallReport:
         path = installation_path(artifact, root)
         if not path.exists():
             return InstallReport(artifact_id=artifact.id, path=str(path), status="missing")
+        _verify_inventory(path, artifact)
         for file in artifact.files:
             verify_file(_path(path, file.destination), file)
             verified += 1
             size += file.size_bytes
         receipt = _path(path, RECEIPT)
-        if receipt.stat().st_size > 4096 or json.loads(receipt.read_bytes()) != _receipt(artifact):
-            raise ArtifactStoreError("artifact receipt does not match catalog identity")
+        _verify_receipt(receipt, artifact)
         return InstallReport(
             artifact_id=artifact.id,
             path=str(path),
@@ -150,11 +178,11 @@ def fetch_artifact(
         partials.rmdir()
         receipt = _path(staging, RECEIPT)
         if receipt.exists():
-            if json.loads(receipt.read_bytes()) != _receipt(artifact):
-                raise ArtifactStoreError("staged receipt identity mismatch")
+            _verify_receipt(receipt, artifact)
         else:
             with receipt.open("x", encoding="utf-8") as stream:
                 json.dump(_receipt(artifact), stream, sort_keys=True)
+        _verify_inventory(staging, artifact)
         destination = installation_path(artifact, root)
         destination.parent.mkdir(exist_ok=True)
         if destination.exists():
