@@ -105,4 +105,10 @@ its command on Linux/macOS; it never downloads or evaluates a model.
 
 ## Contribution workflow
 
+The [model artifact CLI](MODEL_ARTIFACTS.md) lists pinned candidates offline through
+`uv run professor-ai models list --json`. Only `models fetch ID` transfers files.
+Downloader tests use small HTTPX transports inside the network-blocked suite;
+CI never acquires candidate weights. HTTPX is now a runtime dependency for verified
+HTTPS transfers, with the existing locked package versions preserved.
+
 Use a branch and a pull request against `main`, follow [CONTRIBUTING.md](../CONTRIBUTING.md), and reference the relevant [roadmap story](ROADMAP.md). Keep setup commands accurate, tests focused on behavior, and private files out of commits. For a clean-environment check, install the committed checkout in a new temporary directory instead of reusing an existing `.venv`.

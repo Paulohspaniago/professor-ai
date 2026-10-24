@@ -110,6 +110,11 @@ The critical path is foundation → small evaluation set and runtime → storage
 - [ ] As a user, I can obtain the expected model without guessing its origin or settings.
 - **Size:** M. **Dependencies:** S01.02.
 - **Acceptance:** verify one artifact for each of the three generator candidates and the embedding baseline; record upstream and conversion revisions, hashes, byte sizes, notices, tokenizer/template configuration, and runtime requirements; downloads are explicit, resumable, and checksum-verified; insufficient disk space is detected before installation.
+- **Progress:** the [catalog and acquisition CLI](MODEL_ARTIFACTS.md) pin publisher
+  metadata for all four candidates and implement explicit resumable transfers,
+  disk checks, local hash verification and atomic snapshot publication. Full
+  candidate weights/runtime smoke tests, exact conversion ancestry and E5 notice
+  qualification remain pending; the story is not accepted yet.
 
 ### S03.02 — Implement the local generation adapter
 

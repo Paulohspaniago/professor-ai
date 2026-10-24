@@ -59,6 +59,7 @@ These are proposed project choices, not a tested compatibility matrix. See the [
 8. [Contributing](CONTRIBUTING.md)
 9. [Repository maintenance and security settings](docs/REPOSITORY.md)
 10. [Development and local setup](docs/DEVELOPMENT.md)
+11. [Pinned model catalog and explicit acquisition](docs/MODEL_ARTIFACTS.md)
 
 The next vertical slice will import a small document collection, retrieve evidence, and produce a cited answer through the CLI. The interface follows that tested path. Current installation includes the foundation and synthetic evaluation tooling.
 

@@ -38,6 +38,14 @@ Reranking is initially disabled. Evaluate a multilingual cross-encoder on the sa
 
 ## Artifact manifest required before installation
 
+The [packaged catalog and acquisition CLI](MODEL_ARTIFACTS.md) now pin the three
+GGUF candidates and the direct E5 baseline, with announced sizes/digests and
+independently hashed small configuration/notice files. Explicit `models fetch`
+performs local size/hash verification; offline inspection never downloads weights.
+All entries remain publisher-metadata-only and runtime-unqualified. Converter
+ancestry and E5 standalone notice evidence retain the documented limitations;
+this does not select or qualify a default model.
+
 For each generator or embedding artifact, record:
 
 - Upstream repository, immutable revision, and license reference.
